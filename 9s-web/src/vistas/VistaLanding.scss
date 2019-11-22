@@ -1,0 +1,60 @@
+#VistaLanding {
+  height: 72%;
+  min-height: 341px;
+  color: white;
+  .landing_icons-container {
+    height: 60px;
+    position: relative;
+    left: -18px;
+    .device {
+      margin: 12px;
+      height: 60px;
+      position: relative;
+      &.laptop {
+        font-size: 45px;
+      }
+      &.tablet {
+        font-size: 36px;
+        top: 3px;
+      }
+      &.smartphone {
+        font-size: 27px;
+        top: 2px;
+      }
+    }
+    .link {
+      color: white;
+      .arrow-container {
+        width: 240px;
+        height: 300px;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding-right: 18px;
+        padding-bottom: 24px;
+        transition: padding-bottom .6s ease;
+        will-change: transform, box-shadow, z-index;
+        &:hover {
+          cursor: pointer;
+          padding-bottom: 200px;
+        }
+        .arrow {
+          font-size: 24px;
+        }
+      }
+    }
+    .blinker {
+      position: absolute;
+      top: 36px;
+      right: -60px;
+      animation: blinker .9s linear infinite;
+      @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
