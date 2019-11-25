@@ -7,7 +7,7 @@
     position: relative;
     left: -18px;
     .device {
-      margin: 12px;
+      margin: 14px;
       height: 60px;
       position: relative;
       &.laptop {
@@ -25,7 +25,7 @@
     .link {
       color: white;
       .arrow-container {
-        width: 240px;
+        width: 254px;
         height: 300px;
         position: absolute;
         bottom: 0;
@@ -33,7 +33,7 @@
         align-items: flex-end;
         justify-content: flex-end;
         padding-right: 18px;
-        padding-bottom: 24px;
+        padding-bottom: 36px;
         transition: padding-bottom .6s ease;
         will-change: transform, box-shadow, z-index;
         &:hover {
