@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import EnneaTheme from './Theme';
 import VistaLanding from './vistas/VistaLanding';
 import VistaHome from './vistas/VistaHome';
+import VistaTimeLogs from './vistas/VistaTimeLogs';
 
 import './App.scss';
 
@@ -25,6 +26,7 @@ function App() {
               <Switch>
                 <Route exact path={`${basePath}/`} component={VistaLanding} />
                 <Route exact path={`${basePath}/home`} component={VistaHome} />
+                <Route exact path={`${basePath}/timelog`} component={VistaTimeLogs} />
                 {/* <Route exact path={`${basePath}/blog`} component={VistaUnica} /> */}
                 {/* <Route exact path={`${basePath}/contacto`} component={VistaUnica} /> */}
               </Switch>
