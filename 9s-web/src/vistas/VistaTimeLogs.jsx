@@ -17,17 +17,6 @@ class VistaTimeLogs extends React.Component {
     } 
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(this.state.weekTimeTotalMinutes);
-  //   console.log(nextState);
-  //   if (this.state.totalLogTimeInMinutes !== nextState.totalLogTimeInMinutes) {
-  //     console.log(this.state.weekTimeTotalMinutes);
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
   handleWeekTimeTotalMinutes = (weekTimeTotalMinutes) => {
     if (weekTimeTotalMinutes !== this.state.totalLogTimeInMinutes) {
       this.setState((state) => ({

@@ -1,6 +1,8 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { lightGreen, indigo } from '@material-ui/core/colors';
 
+import './Theme.scss'; 
+
 let EnneaTheme = createMuiTheme({
   palette: {
     primary: lightGreen,

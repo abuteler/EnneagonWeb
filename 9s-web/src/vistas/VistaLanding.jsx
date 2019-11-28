@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import Grid from '@material-ui/core/Grid';
 import { Laptop, Tablet, Smartphone, PresentToAll } from '@material-ui/icons';
-import logo_landing from '../assets/img/logo_landing.png';
+import { ReactComponent as LogoLanding } from '../assets/img/logo_landing.svg';
 import './VistaLanding.scss';
 
 class VistaLanding extends React.Component {
@@ -12,7 +12,7 @@ class VistaLanding extends React.Component {
 
     return (
       <Grid id="VistaLanding" container direction="column" justify="center" alignItems="center">
-        <Grid item className="landing_logo"><img src={logo_landing} alt="Logo" /></Grid>
+        <Grid item className="landing_logo"><LogoLanding /></Grid>
         <Grid item className="landing_icons-container">
           <Laptop className="device laptop" />
           <Tablet className="device tablet" />

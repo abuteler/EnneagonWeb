@@ -1,0 +1,25 @@
+// Colors
+$lilac: #F5F9FF;
+
+#Header {
+  .TopContainer {
+    .UserAccessContainer {
+      align-self: flex-end;
+      .icon {
+        color: white;
+      }
+    }
+  }
+  .NavContainer {
+    background: $lilac;
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      a {
+        display: inline-flex;
+        padding: 18px;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

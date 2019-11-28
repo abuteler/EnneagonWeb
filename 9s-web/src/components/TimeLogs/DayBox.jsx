@@ -1,10 +1,11 @@
 import React from 'react';
 
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import { CalendarToday, AccessTime } from '@material-ui/icons';
+import { CalendarToday, Timelapse, ZoomIn } from '@material-ui/icons';
 
 import './DayBox.scss';
 
@@ -47,12 +48,12 @@ class DayBox extends React.Component {
       dayData: {
         week_day,
         date,
-        // year,
-        // time_entries,
       },
       notWorked,
     } = this.props;
     const { totalMinutesWorked } = this.state;
+    const minutos = totalMinutesWorked % 60;
+    const horas = (totalMinutesWorked - minutos) / 60;
 
     return (
       <Container className="DayBox_MuiContainer">
@@ -63,12 +64,12 @@ class DayBox extends React.Component {
               <CalendarToday /><span>{date}</span>
             </div>
             <div className="time">
-              <AccessTime />: {totalMinutesWorked}'
+              <Timelapse />: {horas} hs{minutos > 0 && ` y ${minutos}'`}
             </div>
 
           </CardContent>
           <CardActions>
-            
+            <Button color="primary" size="small" startIcon={<ZoomIn />} variant="contained"></Button>
           </CardActions>
         </Card>
       </Container>

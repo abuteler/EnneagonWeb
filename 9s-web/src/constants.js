@@ -291,22 +291,18 @@ export const p4dLog = {
       },
       {
         "week_day": "martes",
-        "date": "dd MMM",
+        "date": "26 Nov",
         "year": "2019",
-        "time_entries": [{
-          "in": "",
-          "out": "",
-          "tasks": "Sacar node__content selector de common.scss probando que no rompa nada fuera de los nodos. Sacar padding cuadro de pagina Divisas Forex."
-        }]
+        "time_entries": []
       },
       {
         "week_day": "miercoles",
-        "date": "dd MMM",
+        "date": "27 Nov",
         "year": "2019",
         "time_entries": [{
-          "in": "",
-          "out": "",
-          "tasks": ""
+          "in": "13:00",
+          "out": "16:40",
+          "tasks": "Desdoblamiento del template de Cuadros para poder manejar las diferencias (cols y titulos) bypasseando la limitacion de usar logica en twig. Fix de padding en cuadro de pagina Mercado de Divisas Forex. Sacar node__content selector de common.scss probando que no rompa nada fuera de los nodos."
         }]
       },
       {

@@ -5,43 +5,52 @@ $orange: #EF9100;
     padding: 11px;
   }
   .DayBox_MuiCard {
-    width: 160px;
+    width: 180px;
     position: relative;
     &.disabled {
       background: gray;
     }
     .MuiCardContent-root {
       padding: 11px;
-    }
-    h4 {
-      margin: 0;
-      position: absolute;
-      top: 21px;
-      left: 18px;
-      text-transform: capitalize;
-      font-weight: 400;
-      font-size: .9rem;
-      color: $blue;
-    }
-    div.date {
-      font-size: .9rem;
-      position: relative;
-      .MuiSvgIcon-root {
-        font-size: 2.1rem;
-        color: $orange;
+      h4 {
+        margin: 0;
+        position: absolute;
+        top: 21px;
+        left: 18px;
+        text-transform: capitalize;
+        font-weight: 400;
+        font-size: .9rem;
+        color: $blue;
       }
-      span {
-        display: inline-block;
+      div.date {
+        font-size: .9rem;
         position: relative;
-        top: -5px;
-        left: 5px;
+        .MuiSvgIcon-root {
+          font-size: 2.1rem;
+          color: $orange;
+        }
+        span {
+          display: inline-block;
+          position: relative;
+          top: -5px;
+          left: 5px;
+        }
+      }
+      div.time {
+        display: inline-flex;
+        align-items: flex-end;
+        padding-top: 9px;
+        font-size: .9rem;
+        .MuiSvgIcon-root {
+          font-size: 1.4rem;
+          // color: $blue;
+        }
       }
     }
-    div.time {
-      font-size: .9rem;
-      .MuiSvgIcon-root {
-        font-size: 1.4rem;
-        // color: $blue;
+    .MuiCardActions-root {
+      .MuiButton-startIcon {
+        margin-right: 0;
+        width: 18px;
       }
     }
   }
