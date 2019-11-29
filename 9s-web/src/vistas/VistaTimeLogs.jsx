@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 // import { Laptop, Tablet, Smartphone, PresentToAll } from '@material-ui/icons';
 
 import WeekLog from '../components/TimeLogs/WeekLog'
-import { p4dLog } from '../constants'
+import { p4dLog } from '../assets/json/p4d_batch.2'
 import './VistaTimeLogs.scss';
 
 

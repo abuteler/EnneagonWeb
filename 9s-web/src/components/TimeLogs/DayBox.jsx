@@ -1,10 +1,8 @@
 import React from 'react';
 
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
+import { Card, CardActions, CardContent } from '@material-ui/core';
 import { CalendarToday, Timelapse, ZoomIn } from '@material-ui/icons';
 
 import './DayBox.scss';
@@ -64,12 +62,14 @@ class DayBox extends React.Component {
               <CalendarToday /><span>{date}</span>
             </div>
             <div className="time">
-              <Timelapse />: {horas} hs{minutos > 0 && ` y ${minutos}'`}
+              <Timelapse />: {horas}h{minutos > 0 && ` ${minutos}'`}
             </div>
 
           </CardContent>
           <CardActions>
-            <Button color="primary" size="small" startIcon={<ZoomIn />} variant="contained"></Button>
+            <IconButton color="secondary" size="small" disabled={notWorked}>
+              <ZoomIn />
+            </IconButton>
           </CardActions>
         </Card>
       </Container>
