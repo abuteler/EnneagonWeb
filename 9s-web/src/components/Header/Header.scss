@@ -2,11 +2,29 @@
 $lilac: #F5F9FF;
 
 #Header {
+  background: black;
   .TopContainer {
+    .TipografiaLogo {
+      padding: 27px;
+      .EnneagonStudios {
+        height: 110px;
+        width: auto;
+      }
+      .EnneagonLogo {
+        margin-left: 18px;
+        height: 108px;
+        width: auto;
+      }
+    }
     .UserAccessContainer {
+      padding: 9px;
       align-self: flex-end;
-      .icon {
+      .link, .icon {
         color: white;
+        vertical-align: bottom;
+        &:not(:last-child) {
+          margin-right: 9px;
+        }
       }
     }
   }
@@ -15,10 +33,14 @@ $lilac: #F5F9FF;
     nav {
       display: flex;
       justify-content: flex-end;
-      a {
+      a.link {
+        color: black;
         display: inline-flex;
         padding: 18px;
         font-size: 1.3rem;
+        &:not(.is-active) {
+          text-decoration: none;
+        }
       }
     }
   }

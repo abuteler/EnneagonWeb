@@ -1,15 +1,9 @@
 .DayBox_MuiContainer {
-  &.MuiContainer-root {
-    padding: 11px;
-  }
   .DayBox_MuiCard {
-    width: 180px;
-    position: relative;
     &.disabled {
       background: gray;
     }
-    .MuiCardContent-root {
-      padding: 11px;
+    .DayBox_CardContent {
       h4 {
         margin: 0;
         position: absolute;
@@ -42,24 +36,6 @@
         font-size: .9rem;
         .MuiSvgIcon-root {
           font-size: 1.4rem;
-        }
-      }
-    }
-    .MuiCardActions-root {
-      position: absolute;
-      bottom: 0px;
-      right: 0px;
-      display: block;
-      text-align: right;
-      .MuiButtonBase-root {
-        .MuiButton-label, .MuiButton-startIcon {
-        }
-        .MuiSvgIcon-root {
-          font-size: 1.8rem;
-          color: orange;
-        }
-        &.Mui-disabled .MuiSvgIcon-root {
-          color: darken($color: #ffa500, $amount: 27%)
         }
       }
     }

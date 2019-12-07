@@ -55,11 +55,11 @@ class DayBox extends React.Component {
 
     return (
       <Container className="DayBox_MuiContainer">
-        <Card className={ notWorked ? 'DayBox_MuiCard disabled' : 'DayBox_MuiCard'}>
-          <CardContent>
+        <Card className={notWorked ? 'DayBox_MuiCard disabled' : 'DayBox_MuiCard'}>
+          <CardContent className="DayBox_CardContent">
             <h4>{week_day.slice(0,2)}</h4>
             <div className="date">
-              <CalendarToday /><span>{date}</span>
+              <CalendarToday fontSize="large" color={notWorked ? 'disabled' : 'primary'} /><span>{date}</span>
             </div>
             <div className="time">
               <Timelapse />: {horas}h{minutos > 0 && ` ${minutos}'`}

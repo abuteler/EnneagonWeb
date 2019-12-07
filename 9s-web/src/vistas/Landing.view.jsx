@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import { Laptop, Tablet, Smartphone, PresentToAll } from '@material-ui/icons';
 import { ReactComponent as LogoLanding } from '../assets/img/logo_landing.svg';
-import './VistaLanding.scss';
+import './Landing.view.scss';
 
 class VistaLanding extends React.Component {
   

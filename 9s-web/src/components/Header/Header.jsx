@@ -2,33 +2,35 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 import Grid from '@material-ui/core/Grid';
-import { AccountBox, Home } from '@material-ui/icons';
+import { AccountBox, Home, Timelapse } from '@material-ui/icons';
 
 import './Header.scss';
 import { ReactComponent as LogoTop } from '../../assets/img/logo_top.svg';
+import { ReactComponent as EnneagonStudios } from '../../assets/img/Typography9S.svg';
 
-class VistaHome extends React.Component {
+class Header extends React.Component {
   
   render () {
 
     return (
       <header id="Header">
         <Grid container justify="center">
-          <Grid item container xs={12} className="TopContainer">
-            <Grid item xs={2}></Grid>
-            <Grid item xs={8}>
-              <h1>9S Home header</h1>
-              <h2>bla</h2>
-              <LogoTop />
+          <Grid item container xs={12} className="TopContainer" alignContent="center">
+            <Grid item xs={1} xl={2}></Grid>
+            <Grid item xs={10} xl={8} className="TipografiaLogo">
+              <EnneagonStudios className="EnneagonStudios" />
+              <LogoTop className="EnneagonLogo"/>
             </Grid>
-            <Grid item xs={2} className="UserAccessContainer">
-              <NavLink exact={true} activeClassName='is-active' className="link" to="/timelog"><AccountBox className="icon"/></NavLink>
+            <Grid item xs={1} xl={2} className="UserAccessContainer">
+              <NavLink exact={true} activeClassName='is-active' className="link" to="/timelog">Sign In</NavLink>
+              <NavLink exact={true} activeClassName='is-active' className="link" to="/timelog"><Timelapse className="icon"/></NavLink>
             </Grid>
           </Grid>
           <Grid item container xs={12} justify="center" className="NavContainer">
             <Grid item lg={6}>
               <nav>
                 <NavLink exact={true} activeClassName='is-active' className="link" to="/home"><Home className="icon"/> Home</NavLink>
+                <NavLink exact={true} activeClassName='is-active' className="link" to="/home" >Blog</NavLink>
                 <NavLink exact={true} activeClassName='is-active' className="link" to="/contacto">Contacto</NavLink>
                 {/* <NavLink exact={true} activeClassName='is-active' className="link" to="/blog">Blog</NavLink> */}
               </nav>
@@ -40,4 +42,4 @@ class VistaHome extends React.Component {
   }
 }
 
-export default VistaHome;
+export default Header;
