@@ -22,17 +22,17 @@ class Header extends React.Component {
               <LogoTop className="EnneagonLogo"/>
             </Grid>
             <Grid item xs={1} xl={2} className="UserAccessContainer">
-              <NavLink exact={true} activeClassName='is-active' className="link" to="/timelog">Sign In</NavLink>
+              <NavLink exact={true} activeClassName='is-active' className="link" to="/">Sign In</NavLink>
               <NavLink exact={true} activeClassName='is-active' className="link" to="/timelog"><Timelapse className="icon"/></NavLink>
+              <NavLink exact={true} activeClassName='is-active' className="link" to="/"><AccountBox className="icon"/></NavLink>
             </Grid>
           </Grid>
           <Grid item container xs={12} justify="center" className="NavContainer">
             <Grid item lg={6}>
               <nav>
                 <NavLink exact={true} activeClassName='is-active' className="link" to="/home"><Home className="icon"/> Home</NavLink>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/home" >Blog</NavLink>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/contacto">Contacto</NavLink>
-                {/* <NavLink exact={true} activeClassName='is-active' className="link" to="/blog">Blog</NavLink> */}
+                <NavLink exact={true} activeClassName='is-active' className="link" to="/" >Blog</NavLink>
+                <NavLink exact={true} activeClassName='is-active' className="link" to="/">Contacto</NavLink>
               </nav>
             </Grid>
           </Grid>

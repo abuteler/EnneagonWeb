@@ -13,8 +13,8 @@ let TimelogsTheme = createMuiTheme({
   overrides: {
     MuiContainer: {
       root: {
-        background: '#cecece',
-        padding: 11,
+        background: '#454545',
+        padding: '11px 11px !important',
       },
     },
     MuiCard: {

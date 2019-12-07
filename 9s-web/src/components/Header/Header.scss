@@ -17,11 +17,12 @@ $lilac: #F5F9FF;
       }
     }
     .UserAccessContainer {
-      padding: 9px;
+      padding: 9px 9px 9px 0;
       align-self: flex-end;
       .link, .icon {
         color: white;
         vertical-align: bottom;
+        text-decoration: none;
         &:not(:last-child) {
           margin-right: 9px;
         }
