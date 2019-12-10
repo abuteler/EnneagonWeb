@@ -3,7 +3,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import { Card, CardActions, CardContent } from '@material-ui/core';
-import { CalendarToday, Timelapse, ZoomIn } from '@material-ui/icons';
+import { CalendarToday, Update, ZoomIn } from '@material-ui/icons';
 
 import './DayBox.scss';
 
@@ -62,7 +62,7 @@ class DayBox extends React.Component {
               <CalendarToday fontSize="large" color={notWorked ? 'disabled' : 'primary'} /><span>{date}</span>
             </div>
             <div className="time">
-              <Timelapse />: {horas}h{minutos > 0 && ` ${minutos}'`}
+              <Update />: {horas}h{minutos > 0 && ` ${minutos}'`}
             </div>
 
           </CardContent>

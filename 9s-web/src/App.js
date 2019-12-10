@@ -9,6 +9,8 @@ import Header from './components/Header/Header';
 import MainTheme from './themes/Main.theme';
 import VistaLanding from './vistas/Landing.view';
 import VistaHome from './vistas/Home.view';
+import VistaBlog from './vistas/Blog.view';
+import VistaContacto from './vistas/Contacto.view';
 import VistaTimeLogs from './vistas/TimeLogs.view';
 
 import './App.scss';
@@ -54,8 +56,8 @@ function App() {
                 <Route exact path={`${basePath}/`} component={VistaLanding} />
                 <Route exact path={`${basePath}/home`} component={handleRenderInnerView(VistaHome)} />
                 <Route exact path={`${basePath}/timelog`} component={handleRenderInnerView(VistaTimeLogs)} />
-                {/* <Route exact path={`${basePath}/blog`} component={VistaBlog} /> */}
-                {/* <Route exact path={`${basePath}/contacto`} component={VistaContacto} /> */}
+                <Route exact path={`${basePath}/blog`} component={handleRenderInnerView(VistaBlog)} />
+                <Route exact path={`${basePath}/contacto`} component={handleRenderInnerView(VistaContacto)} />
                 {/* STRIPPED COMPONENTS */}
                 <Route exact path={`${basePath}/stripped/timelog`} component={VistaTimeLogs} />
               </Switch>
