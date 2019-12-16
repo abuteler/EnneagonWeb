@@ -16,44 +16,28 @@
     "day": "dd",
     "month": "MMM",
     "year": "2019",
-    "time_entries": [{
-      "in": "",
-      "out": "",
-      "tasks": []
-    }]
+    "time_entries": []
   },
   {
     "week_day": "miercoles",
     "day": "dd",
     "month": "MMM",
     "year": "2019",
-    "time_entries": [{
-      "in": "",
-      "out": "",
-      "tasks": []
-    }]
+    "time_entries": []
   },
   {
     "week_day": "jueves",
     "day": "dd",
     "month": "MMM",
     "year": "2019",
-    "time_entries": [{
-      "in": "",
-      "out": "",
-      "tasks": []
-    }]
+    "time_entries": []
   },
   {
     "week_day": "viernes",
     "day": "dd",
     "month": "MMM",
     "year": "2019",
-    "time_entries": [{
-      "in": "",
-      "out": "",
-      "tasks": []
-    }]
+    "time_entries": []
   }
 ];
 */
@@ -189,7 +173,52 @@ export const p4dLog = {
           ]
         }]
       }
-    ]
+    ],
+    [
+      {
+        "week_day": "lunes",
+        "day": "16",
+        "month": "December",
+        "year": "2019",
+        "time_entries": [{
+          "in": "07:00",
+          "out": "09:00",
+          "tasks": [
+            "(en realidad fue noche del domingo -- 23hs dom a 01hs lunes)",
+            "Finalizacion titulos verticales en Home.",
+            "Otros arreglos responsivos de alineacion (left-padding) de bloques/rows en Home.",
+          ]
+        }]
+      },
+      {
+        "week_day": "martes",
+        "day": "17",
+        "month": "December",
+        "year": "2019",
+        "time_entries": []
+      },
+      {
+        "week_day": "miercoles",
+        "day": "18",
+        "month": "December",
+        "year": "2019",
+        "time_entries": []
+      },
+      {
+        "week_day": "jueves",
+        "day": "19",
+        "month": "December",
+        "year": "2019",
+        "time_entries": []
+      },
+      {
+        "week_day": "viernes",
+        "day": "20",
+        "month": "December",
+        "year": "2019",
+        "time_entries": []
+      }
+    ],
   ]
 };
   
