@@ -5,12 +5,14 @@ import IconButton from '@material-ui/core/IconButton';
 import { Card, CardActions, CardContent } from '@material-ui/core';
 import { CalendarToday, Update, ZoomIn } from '@material-ui/icons';
 
+import DayDetailsDialog from './DayDetailsDialog';
 import './DayBox.scss';
 
 class DayBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      zooming: false,
       totalMinutesWorked: 0,
     } 
   }
@@ -28,12 +30,12 @@ class DayBox extends React.Component {
 
   calculateTotalTimeWorked = () => {
     const {
-      dayData: { date, year, time_entries, },
+      dayData: { day, month, year, time_entries, },
     } = this.props;
     let minutesWorked = 0;
     time_entries.map((entry)=>{
-      let startTime = new Date(`${year} ${date} ${entry.in}`);
-      let endTime = new Date(`${year} ${date} ${entry.out}`);
+      let startTime = new Date(`${year} ${day} ${month} ${entry.in}`);
+      let endTime = new Date(`${year} ${day} ${month} ${entry.out}`);
       const minutesWorkedEntry = Math.abs(endTime - startTime)/ 1000 /60;
       minutesWorked += minutesWorkedEntry;
       return true;
@@ -41,15 +43,30 @@ class DayBox extends React.Component {
     return minutesWorked;
   }
 
+  handleClickOpen = () => {
+    this.setState(() => ({
+      zooming: true,
+    }));
+  };
+
+  handleClose = () => {
+    this.setState(() => ({
+      zooming: false,
+    }));
+  };
+
   render () {
     const {
       dayData: {
         week_day,
-        date,
+        day,
+        month,
+        year,
+        time_entries,
       },
       notWorked,
     } = this.props;
-    const { totalMinutesWorked } = this.state;
+    const { zooming, totalMinutesWorked } = this.state;
     const minutos = totalMinutesWorked % 60;
     const horas = (totalMinutesWorked - minutos) / 60;
 
@@ -57,21 +74,28 @@ class DayBox extends React.Component {
       <Container className="DayBox_MuiContainer">
         <Card className={notWorked ? 'DayBox_MuiCard disabled' : 'DayBox_MuiCard'}>
           <CardContent className="DayBox_CardContent">
-            <h4>{week_day.slice(0,2)}</h4>
-            <div className="date">
-              <CalendarToday fontSize="large" color={notWorked ? 'disabled' : 'primary'} /><span>{date}</span>
+            <div className="DateContainer">
+              <CalendarToday fontSize="large" color={notWorked ? 'disabled' : 'primary'} /><span>{month}</span>
+              <h4>{day}</h4>
+              <h5>{week_day.slice(0,3)}</h5>
             </div>
-            <div className="time">
+            <div className="TimeContainer">
               <Update />: {horas}h{minutos > 0 && ` ${minutos}'`}
             </div>
 
           </CardContent>
           <CardActions>
-            <IconButton color="secondary" size="small" disabled={notWorked}>
+            <IconButton color="secondary" size="small" disabled={notWorked} onClick={this.handleClickOpen}>
               <ZoomIn />
             </IconButton>
           </CardActions>
         </Card>
+        <DayDetailsDialog
+          title={`${week_day} ${day} ${month} ${year}`}
+          timeEntries={time_entries}
+          totalMinutesWorked={totalMinutesWorked}
+          handleClose={this.handleClose}
+          open={zooming} />
       </Container>
     );
   }

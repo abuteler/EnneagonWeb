@@ -4,23 +4,29 @@
       background: gray;
     }
     .DayBox_CardContent {
-      h4 {
-        margin: 0;
-        position: absolute;
-        top: 21px;
-        left: 18px;
-        text-transform: capitalize;
-        font-weight: 400;
-        font-size: .9rem;
-        color: black;
-      }
-      div.date {
+      div.DateContainer {
         font-size: .9rem;
         position: relative;
-        .MuiSvgIcon-root {
-          font-size: 2.1rem;
-          color: #44508a;
+        h4, h5 {
+          margin: 0;
+          position: absolute;
         }
+        h4 {
+          top: 11px;
+          left: 11px;
+          font-weight: 400;
+          font-size: .9rem;
+          color: black;
+        }
+        h5 {
+          text-transform: capitalize;
+          top: 0;
+          right: 0;
+        }
+        // .MuiSvgIcon-root {
+        //   font-size: 2.1rem;
+        //   color: #44508a;
+        // }
         span {
           display: inline-block;
           position: relative;
@@ -29,10 +35,10 @@
           font-weight: 600;
         }
       }
-      div.time {
+      div.TimeContainer {
         display: inline-flex;
         align-items: flex-end;
-        padding: 11px 0 0 11px;
+        padding: 18px 0 11px 36px;
         font-size: .9rem;
         .MuiSvgIcon-root {
           font-size: 1.4rem;

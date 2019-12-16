@@ -2,7 +2,8 @@
 [
   {
     "week_day": "lunes",
-    "date": "dd MMM",
+    "day": "dd",
+    "month": "MMM",
     "year": "2019",
     "time_entries": [{
       "in": "",
@@ -12,7 +13,8 @@
   },
   {
     "week_day": "martes",
-    "date": "dd MMM",
+    "day": "dd",
+    "month": "MMM",
     "year": "2019",
     "time_entries": [{
       "in": "",
@@ -22,7 +24,8 @@
   },
   {
     "week_day": "miercoles",
-    "date": "dd MMM",
+    "day": "dd",
+    "month": "MMM",
     "year": "2019",
     "time_entries": [{
       "in": "",
@@ -32,7 +35,8 @@
   },
   {
     "week_day": "jueves",
-    "date": "dd MMM",
+    "day": "dd",
+    "month": "MMM",
     "year": "2019",
     "time_entries": [{
       "in": "",
@@ -42,7 +46,8 @@
   },
   {
     "week_day": "viernes",
-    "date": "dd MMM",
+    "day": "dd",
+    "month": "MMM",
     "year": "2019",
     "time_entries": [{
       "in": "",
@@ -59,7 +64,8 @@ export const p4dLog = {
     [
       {
         "week_day": "lunes",
-        "date": "02 Dec",
+        "day": "02",
+        "month": "December",
         "year": "2019",
         "time_entries": [{
           "in": "00:00",
@@ -69,7 +75,8 @@ export const p4dLog = {
       },
       {
         "week_day": "martes",
-        "date": "03 Dec",
+        "day": "03",
+        "month": "December",
         "year": "2019",
         "time_entries": [{
           "in": "14:00",
@@ -83,7 +90,8 @@ export const p4dLog = {
       },
       {
         "week_day": "miercoles",
-        "date": "04 Dec",
+        "day": "04",
+        "month": "December",
         "year": "2019",
         "time_entries": [{
           "in": "13:10",
@@ -102,7 +110,8 @@ export const p4dLog = {
       },
       {
         "week_day": "jueves",
-        "date": "05 Dec",
+        "day": "05",
+        "month": "December",
         "year": "2019",
         "time_entries": [{
           "in": "11:00",
@@ -120,12 +129,64 @@ export const p4dLog = {
       },
       {
         "week_day": "viernes",
-        "date": "dd MMM",
+        "day": "06",
+        "month": "December",
+        "year": "2019",
+        "time_entries": []
+      }
+    ],
+    [
+      {
+        "week_day": "lunes",
+        "day": "09",
+        "month": "December",
+        "year": "2019",
+        "time_entries": []
+      },
+      {
+        "week_day": "martes",
+        "day": "10",
+        "month": "December",
+        "year": "2019",
+        "time_entries": []
+      },
+      {
+        "week_day": "miercoles",
+        "day": "11",
+        "month": "December",
         "year": "2019",
         "time_entries": [{
-          "in": "",
-          "out": "",
-          "tasks": []
+          "in": "15:00",
+          "out": "16:00",
+          "tasks": [
+            "Correcciones en staging segun google doc: Contact form page para Cursos y eventos.",
+          ]
+        }]
+      },
+      {
+        "week_day": "jueves",
+        "day": "12",
+        "month": "December",
+        "year": "2019",
+        "time_entries": [{
+          "in": "11:00",
+          "out": "12:00",
+          "tasks": [
+            "QA doc en Google Drive: Cambios a etiquetas en tablas Forex y Negociacion Secundaria",
+          ]
+        }]
+      },
+      {
+        "week_day": "viernes",
+        "day": "13",
+        "month": "December",
+        "year": "2019",
+        "time_entries": [{
+          "in": "15:20",
+          "out": "20:10",
+          "tasks": [
+            "Home: Titulos Verticales.",
+          ]
         }]
       }
     ]

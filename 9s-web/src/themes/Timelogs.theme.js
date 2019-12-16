@@ -1,5 +1,5 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import { indigo, orange } from '@material-ui/core/colors';
+import { indigo, orange, lightGreen } from '@material-ui/core/colors';
 
 
 let TimelogsTheme = createMuiTheme({
@@ -7,14 +7,24 @@ let TimelogsTheme = createMuiTheme({
     primary: indigo,
     secondary: orange,
     background: {
-      default: '#cecece',
+      default: 'white',
     },
   },
   overrides: {
     MuiContainer: {
       root: {
-        background: '#454545',
+        background: 'white',
         padding: '11px 11px !important',
+      },
+    },
+    MuiTypography: {
+      h3: {
+        fontSize: '1.8rem !important',
+        marginBottom: 20
+      },
+      h4: {
+        fontSize: '1.6rem !important',
+        marginTop: 20
       },
     },
     MuiCard: {
@@ -22,11 +32,12 @@ let TimelogsTheme = createMuiTheme({
         padding: 11,
         width: 180,
         position: 'relative',
+        background: lightGreen[50],
       },
     },
     MuiCardContent: {
       root: {
-        padding: 11,
+        padding: 0,
       },
     },
     MuiCardActions: {
