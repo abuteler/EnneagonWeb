@@ -28,13 +28,13 @@ class DayDetailsDialog extends React.Component {
 
     return (
       <Dialog aria-labelledby="day-details-dialog-title" className="DayDetailsDialog" open={open} onClose={handleClose}>
-        <DialogTitle id="day-details-dialog-title" variant="h6" onClose={handleClose}>
+        <DialogTitle id="day-details-dialog-title" className="DayDetailsDialogTitle" variant="h6" onClose={handleClose}>
           {title}
           <IconButton aria-label="close" onClick={handleClose} className="closeIcon">
             <Close />
           </IconButton>
         </DialogTitle>
-        <DialogContent dividers>
+        <DialogContent className="DayDetailsDialogContent" dividers>
           <Grid container>
             <Grid item xs={3}>
               <Typography gutterBottom className="bold-text">Time</Typography>

@@ -167,7 +167,7 @@ export const p4dLog = {
         "year": "2019",
         "time_entries": [{
           "in": "15:20",
-          "out": "20:10",
+          "out": "20:20",
           "tasks": [
             "Home: Titulos Verticales.",
           ]
@@ -195,7 +195,13 @@ export const p4dLog = {
         "day": "17",
         "month": "December",
         "year": "2019",
-        "time_entries": []
+        "time_entries": [{
+          "in": "12:20",
+          "out": "12:40",
+          "tasks": [
+            "Alta de titulos verticales en Home de Staging.",
+          ]
+        }]
       },
       {
         "week_day": "miercoles",
@@ -209,7 +215,14 @@ export const p4dLog = {
         "day": "19",
         "month": "December",
         "year": "2019",
-        "time_entries": []
+        "time_entries": [{
+          "in": "12:50",
+          "out": "16:50",
+          "tasks": [
+            "Relevamiento problema en calendario, click en fecha lleva a pagina no encontrada.",
+            "Fix en opciones de configuracion del plugin que usamos.",
+          ]
+        }]
       },
       {
         "week_day": "viernes",
