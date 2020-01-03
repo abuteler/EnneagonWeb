@@ -9,8 +9,8 @@ import WeekLog from '../components/TimeLogs/WeekLog'
 import TimelogsTheme from '../themes/Timelogs.theme';
 import './TimeLogs.view.scss';
 
-// import { p4dLog } from '../assets/json/p4d_batch.2'
-import { p4dLog } from '../assets/json/p4d_batch.3'
+import { p4dLog as NovLog } from '../assets/json/p4d_batch.2'
+import { p4dLog as DecLog } from '../assets/json/p4d_batch.3'
 
 class VistaTimeLogs extends React.Component {
   constructor(props) {
@@ -32,6 +32,9 @@ class VistaTimeLogs extends React.Component {
     const { totalLogTimeInMinutes } = this.state;
     const minutos = totalLogTimeInMinutes % 60;
     const horas = (totalLogTimeInMinutes - minutos) / 60;
+
+    const p4dLog = (this.props.location.search === "?nov") ? NovLog : DecLog;
+
     return (
       <ThemeProvider theme={TimelogsTheme}>
         <Container id="VistaTimeLogs">

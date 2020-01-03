@@ -220,7 +220,7 @@ export const p4dLog = {
           "out": "16:50",
           "tasks": [
             "Relevamiento problema en calendario, click en fecha lleva a pagina no encontrada.",
-            "Fix en opciones de configuracion del plugin que usamos.",
+            "Fix.",
           ]
         }]
       },

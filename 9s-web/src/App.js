@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Header from './components/Header/Header';
 import MainTheme from './themes/Main.theme';
 import VistaLanding from './vistas/Landing.view';
+import VistaSoon from './vistas/Soon.view';
 import VistaHome from './vistas/Home.view';
 import VistaBlog from './vistas/Blog.view';
 import VistaContacto from './vistas/Contacto.view';
@@ -54,6 +55,7 @@ function App() {
             <Router>
               <Switch>
                 <Route exact path={`${basePath}/`} component={VistaLanding} />
+                <Route exact path={`${basePath}/soon`} component={VistaSoon} />
                 <Route exact path={`${basePath}/home`} component={handleRenderInnerView(VistaHome)} />
                 <Route exact path={`${basePath}/timelog`} component={handleRenderInnerView(VistaTimeLogs)} />
                 <Route exact path={`${basePath}/blog`} component={handleRenderInnerView(VistaBlog)} />
