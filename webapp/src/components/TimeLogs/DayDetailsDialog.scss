@@ -1,0 +1,30 @@
+.DayDetailsDialog {
+  position: relative;
+  .DayDetailsDialogTitle {
+    text-transform: capitalize;
+    .closeIcon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  }
+  .DayDetailsDialogContent {
+    min-width: 600px;
+    span.TimeLapse {
+      display: inline-block;
+      margin: 16px 0;
+    }
+    ul.TaskList {
+      padding: 0;
+    }
+    .totalTimeContainer {
+      display: flex;
+      .clockIcon {
+        color: limegreen;
+      }
+    }
+  }
+  .bold-text {
+    font-weight: 600;
+  }
+}
