@@ -11,7 +11,7 @@ class VistaLanding extends React.Component {
   render () {
 
     return (
-      <Grid id="VistaLanding" container direction="column" justify="center" alignItems="center">
+      <Grid id="VistaLanding" container direction="column" justifyContent="center" alignItems="center">
         <Grid item className="landing_logo"><LogoLanding /></Grid>
         <Grid item className="landing_icons-container">
           <Laptop className="device laptop" />

@@ -1,8 +1,8 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { indigo, orange, lightGreen } from '@material-ui/core/colors';
 
 
-let TimelogsTheme = createMuiTheme({
+let TimelogsTheme = createTheme({
   palette: {
     primary: indigo,
     secondary: orange,

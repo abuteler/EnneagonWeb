@@ -54,7 +54,7 @@ class VistaTimeLogs extends React.Component {
           <Typography variant="h3">
             Nombre del Proyecto: {p4dLog.projectName}
           </Typography>
-          <Grid container direction="row" justify="center" alignItems="center">
+          <Grid container direction="row" justifyContent="center" alignItems="center">
             {p4dLog.weeks.map((week, i) => (
               <WeekLog
                 key={i}

@@ -14,7 +14,7 @@ class Header extends React.Component {
 
     return (
       <header id="Header">
-        <Grid container justify="center">
+        <Grid container justifyContent="center">
           <Grid item container xs={12} className="TopContainer" alignContent="center">
             <Grid item xs={1} xl={2}></Grid>
             <Grid item xs={10} xl={8} className="TipografiaLogo">
@@ -27,7 +27,7 @@ class Header extends React.Component {
               <NavLink exact={true} activeClassName='is-active' className="link" to="/"><AccountBox className="icon"/></NavLink>
             </Grid>
           </Grid>
-          <Grid item container xs={12} justify="center" className="NavContainer">
+          <Grid item container xs={12} justifyContent="center" className="NavContainer">
             <Grid item lg={6}>
               <nav>
                 <NavLink exact={true} activeClassName='is-active' className="link" to="/home">Home</NavLink>

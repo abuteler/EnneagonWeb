@@ -1,8 +1,8 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 // import { lightGreen, indigo } from '@material-ui/core/colors';
+import './9Scolors.scss';
 
-
-let MainTheme = createMuiTheme({
+let MainTheme = createTheme({
   palette: {
     primary: {
       light: '#DDFED5',

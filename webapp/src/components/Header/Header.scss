@@ -1,5 +1,5 @@
 // Colors
-$lilac: #F5F9FF;
+@import '../../themes/9Scolors.scss';
 
 #Header {
   background: black;
@@ -30,7 +30,7 @@ $lilac: #F5F9FF;
     }
   }
   .NavContainer {
-    background: $lilac;
+    background: lighten($purple, 12%);
     nav {
       display: flex;
       justify-content: flex-end;

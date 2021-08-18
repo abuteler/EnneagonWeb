@@ -25,7 +25,7 @@ const handleRenderInnerView = (InnerComponent) => {
     // 2do: handle user sessions
     render() {
       return (
-        <Grid id="VistaHome" container justify="center">
+        <Grid id="VistaHome" container justifyContent="center">
           <Grid item xs={12}>
             <Header />
           </Grid>
@@ -33,13 +33,13 @@ const handleRenderInnerView = (InnerComponent) => {
             <InnerComponent />
           </Grid>
           <Grid item xs={12}>
+          </Grid>
             <footer>
               <span>9S Footer</span>
               <a href="http://www.enneagonstudios.com/" target="_blank" rel="noopener noreferrer">
                 {/* <img src={footer_logo} alt="Enneagon Studios Logo" /> */} A link
               </a>
             </footer>
-          </Grid>
         </Grid>
       );
     };
@@ -53,24 +53,18 @@ function App() {
       <CssBaseline />
       <Provider store={store}>
         <div className="App">
-          <Grid container justify="center" direction="column" className="full-height">
-            <Grid item container className="full-height">
-              <section id="App_Vistas">
-              <Router>
-                <Switch>
-                  <Route exact path={`${basePath}/`} component={VistaLanding} />
-                  <Route exact path={`${basePath}/soon`} component={VistaSoon} />
-                  <Route exact path={`${basePath}/home`} component={handleRenderInnerView(VistaHome)} />
-                  <Route exact path={`${basePath}/timelog`} component={handleRenderInnerView(VistaTimeLogs)} />
-                  <Route exact path={`${basePath}/blog`} component={handleRenderInnerView(VistaBlog)} />
-                  <Route exact path={`${basePath}/contacto`} component={handleRenderInnerView(VistaContacto)} />
-                  {/* STRIPPED COMPONENTS */}
-                  <Route exact path={`${basePath}/stripped/timelog`} component={VistaTimeLogs} />
-                </Switch>
-              </Router>
-              </section>
-            </Grid>
-          </Grid>
+          <Router>
+            <Switch>
+              <Route exact path={`${basePath}/`} component={VistaLanding} />
+              <Route exact path={`${basePath}/soon`} component={VistaSoon} />
+              <Route exact path={`${basePath}/home`} component={handleRenderInnerView(VistaHome)} />
+              <Route exact path={`${basePath}/timelog`} component={handleRenderInnerView(VistaTimeLogs)} />
+              <Route exact path={`${basePath}/blog`} component={handleRenderInnerView(VistaBlog)} />
+              <Route exact path={`${basePath}/contacto`} component={handleRenderInnerView(VistaContacto)} />
+              {/* STRIPPED COMPONENTS */}
+              <Route exact path={`${basePath}/stripped/timelog`} component={VistaTimeLogs} />
+            </Switch>
+          </Router>
         </div>
       </Provider>
     </ThemeProvider>
