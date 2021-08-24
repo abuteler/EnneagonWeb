@@ -25,7 +25,7 @@ const handleRenderInnerView = (InnerComponent) => {
     // 2do: handle user sessions
     render() {
       return (
-        <Grid id="VistaHome" container justifyContent="center">
+        <Grid id="MainGrid" container justifyContent="center">
           <Grid item xs={12}>
             <Header />
           </Grid>

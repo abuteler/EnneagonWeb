@@ -6,9 +6,10 @@
   .TopContainer {
     .TipografiaLogo {
       padding: 27px;
-      .EnneagonStudios {
+      .EnneagonStudios, .EnneagonStudiosCore {
         height: 110px;
         width: auto;
+        overflow: hidden;
       }
       .EnneagonLogo {
         margin-right: 18px;
@@ -16,9 +17,9 @@
         width: auto;
       }
     }
-    .UserAccessContainer {
+    .UserMenu {
       padding: 9px 9px 9px 0;
-      align-self: flex-end;
+      // align-self: flex-end;
       .link, .icon {
         color: white;
         vertical-align: bottom;
@@ -44,6 +45,18 @@
         &.is-active {
           border-bottom: 2px solid black;
           height: fit-content;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 625px) {
+  #Header {
+    .TopContainer {
+      .TipografiaLogo {
+        .EnneagonStudiosCore {
+          height: 90px;
         }
       }
     }
