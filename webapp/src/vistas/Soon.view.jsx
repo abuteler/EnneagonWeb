@@ -2,7 +2,7 @@ import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import { ReactComponent as LogoSoon } from '../assets/img/logo_landing.svg';
-import { ReactComponent as EnneagonStudios } from '../assets/img/Typography9S.svg';
+import { ReactComponent as EnneagonStudios } from '../assets/img/Typography9S_lg.svg';
 import './Soon.view.scss';
 import { Typography } from '@material-ui/core';
 

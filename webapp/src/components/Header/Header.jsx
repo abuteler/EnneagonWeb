@@ -6,8 +6,10 @@ import { AccountBox, AccessTime } from '@material-ui/icons';
 
 import './Header.scss';
 import { ReactComponent as LogoTop } from '../../assets/img/logo_top.svg';
-import { ReactComponent as EnneagonStudios } from '../../assets/img/Typography9S.svg';
-import { ReactComponent as EnneagonStudiosCore } from '../../assets/img/Typography9Score.svg';
+import { ReactComponent as EnneagonStudiosLg } from '../../assets/img/Typography9S_lg.svg';
+import { ReactComponent as EnneagonStudiosMd } from '../../assets/img/Typography9S_md.svg';
+import { ReactComponent as EnneagonStudiosSm } from '../../assets/img/Typography9S_sm.svg';
+import { ReactComponent as EnneagonStudiosSmSubtitle } from '../../assets/img/Typography9S_sm_subtitle.svg';
 
 class Header extends React.Component {
   
@@ -20,8 +22,12 @@ class Header extends React.Component {
             <Grid item xs={0} md={1} lg={2}></Grid>
             <Grid item xs={0} lg={8} className="TipografiaLogo">
               <LogoTop className="EnneagonLogo"/>
-              <Hidden mdUp><EnneagonStudiosCore className="EnneagonStudiosCore" /></Hidden>
-              <Hidden smDown><EnneagonStudios className="EnneagonStudios" /></Hidden>
+              <Hidden smDown><EnneagonStudiosLg className="EnneagonStudios lg" /></Hidden>
+              <Hidden xsDown mdUp><EnneagonStudiosMd className="EnneagonStudios md" /></Hidden>
+              <Hidden smUp>
+                <EnneagonStudiosSm className="EnneagonStudios sm" />
+                <EnneagonStudiosSmSubtitle className="EnneagonStudiosSubtitle" />
+              </Hidden>
             </Grid>
             <Grid item container xs={12} lg={2} className="UserMenu" justify="flex-end" alignContent="flex-end" alignItems="flex-end">
               <NavLink exact={true} activeClassName='is-active' className="link" to="/">Clientes</NavLink>
