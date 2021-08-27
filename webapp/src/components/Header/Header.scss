@@ -1,7 +1,7 @@
 // Colors
 @import '../../themes/9Scolors.scss';
 
-#Header {
+header {
   background: black;
   .TopContainer {
     .TipografiaLogo {
@@ -43,8 +43,8 @@
       a.link {
         color: black;
         display: inline-flex;
-        margin: 18px;
-        font-size: 1.2rem;
+        margin: 15px;
+        font-size: 1.1rem;
         font-family: "Open Sans";
         text-decoration: none;
         &.is-active {
@@ -57,7 +57,7 @@
 }
 
 @media (max-width: 625px) {
-  #Header {
+  header {
     .TopContainer {
       .TipografiaLogo {
         padding-bottom: 0;
@@ -69,7 +69,7 @@
   }
 }
 @media (max-width: 425px) {
-  #Header {
+  header {
     .TopContainer {
       .TipografiaLogo {
         .EnneagonLogo {

@@ -16,11 +16,11 @@ class Header extends React.Component {
   render () {
 
     return (
-      <header id="Header">
+      <header>
         <Grid container justifyContent="center">
           <Grid item container className="TopContainer" alignContent="center">
-            <Grid item xs={0} md={1} lg={2}></Grid>
-            <Grid item xs={0} lg={8} className="TipografiaLogo">
+            <Hidden xsDown><Grid item md={1} lg={2}></Grid></Hidden>
+            <Grid item xs={12} lg={8} className="TipografiaLogo">
               <LogoTop className="EnneagonLogo"/>
               <Hidden smDown><EnneagonStudiosLg className="EnneagonStudios lg" /></Hidden>
               <Hidden xsDown mdUp><EnneagonStudiosMd className="EnneagonStudios md" /></Hidden>
@@ -29,7 +29,7 @@ class Header extends React.Component {
                 <EnneagonStudiosSmSubtitle className="EnneagonStudiosSubtitle" />
               </Hidden>
             </Grid>
-            <Grid item container xs={12} lg={2} className="UserMenu" justify="flex-end" alignContent="flex-end" alignItems="flex-end">
+            <Grid item container xs={12} lg={2} className="UserMenu" justifyContent="flex-end" alignContent="flex-end" alignItems="flex-end">
               <NavLink exact={true} activeClassName='is-active' className="link" to="/">Clientes</NavLink>
               <NavLink exact={true} activeClassName='is-active' className="link" to="/timelog"><AccessTime className="icon"/></NavLink>
               <NavLink exact={true} activeClassName='is-active' className="link" to="/"><AccountBox className="icon"/></NavLink>
