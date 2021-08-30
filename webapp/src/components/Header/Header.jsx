@@ -1,27 +1,35 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 
-import Grid from '@material-ui/core/Grid';
+import { Grid, Hidden } from '@material-ui/core/';
 import { AccountBox, AccessTime } from '@material-ui/icons';
 
 import './Header.scss';
 import { ReactComponent as LogoTop } from '../../assets/img/logo_top.svg';
-import { ReactComponent as EnneagonStudios } from '../../assets/img/Typography9S.svg';
+import { ReactComponent as EnneagonStudiosLg } from '../../assets/img/Typography9S_lg.svg';
+import { ReactComponent as EnneagonStudiosMd } from '../../assets/img/Typography9S_md.svg';
+import { ReactComponent as EnneagonStudiosSm } from '../../assets/img/Typography9S_sm.svg';
+import { ReactComponent as EnneagonStudiosSmSubtitle } from '../../assets/img/Typography9S_sm_subtitle.svg';
 
 class Header extends React.Component {
   
   render () {
 
     return (
-      <header id="Header">
+      <header>
         <Grid container justifyContent="center">
-          <Grid item container xs={12} className="TopContainer" alignContent="center">
-            <Grid item xs={1} xl={2}></Grid>
-            <Grid item xs={10} xl={8} className="TipografiaLogo">
+          <Grid item container className="TopContainer" alignContent="center">
+            <Hidden xsDown><Grid item md={1} lg={2}></Grid></Hidden>
+            <Grid item xs={12} lg={8} className="TipografiaLogo">
               <LogoTop className="EnneagonLogo"/>
-              <EnneagonStudios className="EnneagonStudios" />
+              <Hidden smDown><EnneagonStudiosLg className="EnneagonStudios lg" /></Hidden>
+              <Hidden xsDown mdUp><EnneagonStudiosMd className="EnneagonStudios md" /></Hidden>
+              <Hidden smUp>
+                <EnneagonStudiosSm className="EnneagonStudios sm" />
+                <EnneagonStudiosSmSubtitle className="EnneagonStudiosSubtitle" />
+              </Hidden>
             </Grid>
-            <Grid item xs={1} xl={2} className="UserAccessContainer">
+            <Grid item container xs={12} lg={2} className="UserMenu" justifyContent="flex-end" alignContent="flex-end" alignItems="flex-end">
               <NavLink exact={true} activeClassName='is-active' className="link" to="/">Clientes</NavLink>
               <NavLink exact={true} activeClassName='is-active' className="link" to="/timelog"><AccessTime className="icon"/></NavLink>
               <NavLink exact={true} activeClassName='is-active' className="link" to="/"><AccountBox className="icon"/></NavLink>

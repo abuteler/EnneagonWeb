@@ -6,9 +6,9 @@ import store from './store';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
 
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import MainTheme from './themes/Main.theme';
 import VistaLanding from './vistas/Landing.view';
 import VistaSoon from './vistas/Soon.view';
@@ -25,22 +25,13 @@ const handleRenderInnerView = (InnerComponent) => {
     // 2do: handle user sessions
     render() {
       return (
-        <Grid id="VistaHome" container justifyContent="center">
-          <Grid item xs={12}>
-            <Header />
-          </Grid>
-          <Grid item xs={12} className="InnerViewContainer">
+        <div className="InnerViewRootContainer">
+          <Header />
+          <section className="InnerViewContentContainer">
             <InnerComponent />
-          </Grid>
-          <Grid item xs={12}>
-          </Grid>
-            <footer>
-              <span>9S Footer</span>
-              <a href="http://www.enneagonstudios.com/" target="_blank" rel="noopener noreferrer">
-                {/* <img src={footer_logo} alt="Enneagon Studios Logo" /> */} A link
-              </a>
-            </footer>
-        </Grid>
+          </section>
+          <Footer />
+        </div>
       );
     };
   };

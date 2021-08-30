@@ -1,24 +1,30 @@
 // Colors
 @import '../../themes/9Scolors.scss';
 
-#Header {
+header {
   background: black;
   .TopContainer {
     .TipografiaLogo {
       padding: 27px;
-      .EnneagonStudios {
-        height: 110px;
-        width: auto;
-      }
       .EnneagonLogo {
         margin-right: 18px;
         height: 108px;
         width: auto;
       }
+      .EnneagonStudios {
+        height: 110px;
+        width: auto;
+        overflow: hidden;
+      }
+      .EnneagonStudiosSubtitle {
+        height: 25px;
+        width: auto;
+        padding-left: 6px;
+      }
     }
-    .UserAccessContainer {
+    .UserMenu {
       padding: 9px 9px 9px 0;
-      align-self: flex-end;
+      // align-self: flex-end;
       .link, .icon {
         color: white;
         vertical-align: bottom;
@@ -37,13 +43,43 @@
       a.link {
         color: black;
         display: inline-flex;
-        margin: 18px;
-        font-size: 1.2rem;
+        margin: 15px;
+        font-size: 1.1rem;
         font-family: "Open Sans";
         text-decoration: none;
         &.is-active {
           border-bottom: 2px solid black;
           height: fit-content;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 625px) {
+  header {
+    .TopContainer {
+      .TipografiaLogo {
+        padding-bottom: 0;
+        .EnneagonStudios.md {
+          height: 100px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  header {
+    .TopContainer {
+      .TipografiaLogo {
+        .EnneagonLogo {
+          height: 90px;
+        }
+        .EnneagonStudios.sm {
+          height: 90px;
+        }
+        .EnneagonStudiosSubtitle {
+          height: 1.3rem;
         }
       }
     }
