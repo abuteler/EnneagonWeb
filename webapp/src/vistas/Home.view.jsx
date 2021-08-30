@@ -3,14 +3,16 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 
 import './Home.view.scss';
+import { withTranslation } from 'react-i18next';
 
 
 class VistaHome extends React.Component {
-  
   render () {
-
+    
+    const { t } = this.props;
     return (
       <Container id="VistaHome">
+        <p>{t('welcome')}</p>
         <p>
           En Enneagon Studios creemos que cualquiera sea el escenario y el campo de estudio o trabajo, realizar cambios positivos es posible cuando se agrupan y combinan los recursos disponibles con amor e inteligencia.
           Que crecer y brindar oportunidades de crecimiento a otras personas es viable, y necesario.<br />
@@ -24,4 +26,4 @@ class VistaHome extends React.Component {
   }
 }
 
-export default VistaHome;
+export default withTranslation()(VistaHome);
