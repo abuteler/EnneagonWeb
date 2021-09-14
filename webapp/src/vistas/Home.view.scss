@@ -1,0 +1,28 @@
+#VistaHome {
+  section#nearshore {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    img {
+      height: auto;
+      min-width: 310px;
+    }
+    div.nearshore-text {
+      width: 50%;
+      padding-left: 10%;
+    }
+  }
+}
+
+
+// SM devices
+@media (max-width: 960px) {
+  #VistaHome {
+    section#nearshore {
+      div.nearshore-text {
+        width: 100%;
+      }
+    }
+  }
+}

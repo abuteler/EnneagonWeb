@@ -39,8 +39,11 @@ class Header extends React.Component {
             <Grid item lg={6}>
               <nav>
                 <NavLink exact={true} activeClassName='is-active' className="link" to="/home">Home</NavLink>
+                <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >About Us</NavLink>
+                <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Services</NavLink>
+                <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Technologies</NavLink>
                 <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Blog</NavLink>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/contacto">Contacto</NavLink>
+                <NavLink exact={true} activeClassName='is-active' className="link" to="/contacto">Contact</NavLink>
               </nav>
             </Grid>
           </Grid>
