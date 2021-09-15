@@ -9,12 +9,22 @@
       min-width: 310px;
     }
     div.nearshore-text {
-      width: 50%;
+      width: 54%;
       padding-left: 10%;
     }
   }
 }
 
+// MD devices
+@media (max-width: 1280px) {
+  #VistaHome {
+    section#nearshore {
+      div.nearshore-text {
+        width: 48%;
+      }
+    }
+  }
+}
 // SM devices
 @media (max-width: 960px) {
   #VistaHome {

@@ -36,7 +36,7 @@ header {
     }
   }
   .NavContainer {
-    background: lighten($purple, 12%);
+    background: $dark-lilac;
     nav {
       display: flex;
       justify-content: flex-end;

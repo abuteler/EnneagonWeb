@@ -11,7 +11,16 @@ header {
   min-height: 22vh;
 }
 section.InnerViewContentContainer {
-  padding: 2rem 0;
+  padding: 2rem 6rem;
+  h1, h2 {
+    color: $dark-blue-font;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+  }
+  h2 {
+    color: $orange;
+    font-size: 1rem;
+  }
   p {
     text-align: justify;
   }
@@ -20,12 +29,12 @@ section.InnerViewContentContainer {
 
 // MD devices
 @media (max-width: 1280px) {
+  section.InnerViewContentContainer {
+    padding: 2rem;
+  }
 }
 // SM devices
 @media (max-width: 960px) {
-  section.InnerViewContentContainer {
-    padding: 1rem 0;
-  }
 }
 // XS devices
 @media (max-width: 425px) {

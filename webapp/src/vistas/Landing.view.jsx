@@ -17,7 +17,7 @@ class VistaLanding extends React.Component {
           <Laptop className="device laptop" />
           <Tablet className="device tablet" />
           <Smartphone className="device smartphone" />
-          <NavLink exact={true} activeClassName='is-active' className="link" to="/soon">
+          <NavLink exact={true} activeClassName='is-active' className="link" to="/home">
             <div className="arrow-container">
               <PresentToAll className="arrow" />
             </div>
