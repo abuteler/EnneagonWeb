@@ -1,6 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import { Spanish, English } from './translations';
+
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -18,6 +22,17 @@ import VistaContacto from './vistas/Contacto.view';
 import VistaTimeLogs from './vistas/TimeLogs.view';
 
 import './App.scss';
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: { translation: English },
+      es: { translation: Spanish },
+    },
+    language: 'en',
+    fallbackLng: 'en'
+  })
 
 const handleRenderInnerView = (InnerComponent) => {
   // See React HOCs for reference.

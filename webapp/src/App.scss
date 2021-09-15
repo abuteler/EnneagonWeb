@@ -11,23 +11,22 @@ header {
   min-height: 22vh;
 }
 section.InnerViewContentContainer {
-  padding: 2rem 5rem 3rem;
+  padding: 2rem 0;
   p {
     text-align: justify;
   }
   min-height: 68vh;
 }
 
-
+// MD devices
+@media (max-width: 1280px) {
+}
 // SM devices
-@media (max-width: 625px) {
+@media (max-width: 960px) {
   section.InnerViewContentContainer {
-    padding: 1rem 2rem 2rem;
+    padding: 1rem 0;
   }
 }
 // XS devices
 @media (max-width: 425px) {
-  section.InnerViewContentContainer {
-    padding: 1rem;
-  }
 }
