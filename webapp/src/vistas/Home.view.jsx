@@ -10,14 +10,20 @@ import { withTranslation } from 'react-i18next';
 
 class VistaHome extends React.Component {
   render () {
-    
+
     const { t } = this.props;
     return (
       <Container id="VistaHome" maxWidth="xl">
-        <p>{t('welcome')}</p>
+        <h1>{t('welcome')}</h1>
+        <h2>{t('who')}</h2>
+        <p>{t('who_text')}</p>
         <section id="nearshore">
           <img src={NearshoreMap} alt="Nearshore map"/>
           <div className="nearshore-text">
+            <h2>{t('where')}</h2>
+            <p>{t('where_text')}</p>
+            <h2>{t('why')}</h2>
+            <p>{t('why_text')}</p>
             <p>
               En Enneagon Studios creemos que cualquiera sea el escenario y el campo de estudio o trabajo, realizar cambios positivos es posible cuando se agrupan y combinan los recursos disponibles con amor e inteligencia.
               Que crecer y brindar oportunidades de crecimiento a otras personas es viable, y necesario.<br />
