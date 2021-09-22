@@ -14,12 +14,14 @@ class VistaHome extends React.Component {
     const { t } = this.props;
     return (
       <Container id="VistaHome" maxWidth="xl">
-        <h1>{t('welcome')}</h1>
-        <h2>{t('who')}</h2>
-        <p>{t('who_text')}</p>
         <section id="nearshore">
+          <div class="who">
+            <h1>{t('welcome')}</h1>
+            <h2>{t('who')}</h2>
+            <p>{t('who_text')}</p>
+          </div>
           <img src={NearshoreMap} alt="Nearshore map"/>
-          <div className="nearshore-text">
+          <div className="map-text">
             <h2>{t('where')}</h2>
             <p>{t('where_text')}</p>
             <h2>{t('why')}</h2>
