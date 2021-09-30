@@ -14,17 +14,40 @@
       min-width: 310px;
     }
     div.map-text {
-      width: 54%;
+      width: 62%;
+      p {
+        margin: 0 0 .5rem 0;
+      }
+      .key-values {
+        &> h3, &> p {
+          margin-left: 1.5rem;
+        }
+      }
     }
   }
 }
-
+// MD devices
+@media (max-width: 1440px) {
+  #VistaHome {
+    section#nearshore {
+      div.map-text {
+        width: 54%;
+      }
+    }
+  }
+}
 // MD devices
 @media (max-width: 1280px) {
   #VistaHome {
     section#nearshore {
+      justify-content: space-evenly;
       div.map-text {
         width: 48%;
+        .key-values {
+          &> h3, &> p {
+            margin-left: 1rem;
+          }
+        }
       }
     }
   }
@@ -32,6 +55,9 @@
 // SM devices
 @media (max-width: 960px) {
   #VistaHome {
+    p {
+      font-size: .9rem;
+    }
     section#nearshore {
       justify-content: center;
       div.map-text {

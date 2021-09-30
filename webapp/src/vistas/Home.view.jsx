@@ -15,25 +15,25 @@ class VistaHome extends React.Component {
     return (
       <Container id="VistaHome" maxWidth="xl">
         <section id="nearshore">
-          <div class="who">
-            <h1>{t('welcome')}</h1>
-            <h2>{t('who')}</h2>
-            <p>{t('who_text')}</p>
+          <div className="who">
+            <h1>{t('home.welcome')}</h1>
+            <h2>{t('home.who')}</h2>
+            <p>{t('home.who_text')}</p>
           </div>
           <img src={NearshoreMap} alt="Nearshore map"/>
           <div className="map-text">
-            <h2>{t('where')}</h2>
-            <p>{t('where_text')}</p>
-            <h2>{t('why')}</h2>
-            <p>{t('why_text')}</p>
-            <p>
-              En Enneagon Studios creemos que cualquiera sea el escenario y el campo de estudio o trabajo, realizar cambios positivos es posible cuando se agrupan y combinan los recursos disponibles con amor e inteligencia.
-              Que crecer y brindar oportunidades de crecimiento a otras personas es viable, y necesario.<br />
-              Que las oportunidades de cambio y mejora están presentes en todo momento cuando las personas involucradas ponen lo mejor de sí mismas para encontrarlas y aprovecharlas.<br />
-              Que en el contexto de una crisis severa es posible hacer mejoras, y sin dudas es mejor hacer control de daños que rendirse y cruzarse de brazos a ver como la escena de la que somos parte termina en tragedia.
-              Y que si aún con poco se puede lograr mucho, con la suma de un esfuerzo colectivo es posible crear y sostener un contexto favorable, en el que el crecimiento sea personal, social y global; saludable y sustentable.
-              En Enneagon Studios no nos alcanza con buscar el propio crecimiento: creemos y queremos firmemente que un mundo mejor es y siga siendo posible.<br />
-            </p>
+            <h2>{t('home.where')}</h2>
+            <p>{t('home.where_text')}</p>
+            <h2>{t('home.why')}</h2>
+            <p>{t('home.why_text')}</p>
+            <div className="key-values">
+              <h3>{t('home.accountability')}</h3>
+              <p>{t('home.why_text_2')}</p>
+              <h3>{t('home.high_standards')}</h3>
+              <p>{t('home.why_text_3')}</p>
+              <h3>{t('home.low_cost')}</h3>
+              <p>{t('home.why_text_4')}</p>
+            </div>
           </div>
         </section>
       </Container>
