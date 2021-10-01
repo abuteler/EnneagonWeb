@@ -69,6 +69,8 @@ function App() {
               <Route exact path={`${basePath}/contacto`} component={handleRenderInnerView(VistaContacto)} />
               {/* STRIPPED COMPONENTS */}
               <Route exact path={`${basePath}/stripped/timelog`} component={VistaTimeLogs} />
+              {/* Catch All Unmatching */}
+              <Route path="*" component={VistaLanding} />
             </Switch>
           </Router>
         </div>

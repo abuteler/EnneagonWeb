@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 import { Grid, Hidden } from '@material-ui/core/';
-import { AccountBox, AccessTime } from '@material-ui/icons';
+import { AccountBox, AccessTime, Home, Menu } from '@material-ui/icons';
 
 import './Header.scss';
 import { ReactComponent as LogoTop } from '../../assets/img/logo_top.svg';
@@ -36,16 +36,26 @@ class Header extends React.Component {
             </Grid>
           </Grid>
           <Grid item container xs={12} justifyContent="center" className="NavContainer">
-            <Grid item lg={6}>
+            {/* Nav for devices SM and up */}
+            <Hidden xsDown>
+              <Grid item lg={6}>
+                <nav>
+                    <NavLink exact={true} activeClassName='is-active' className="link" to="/home">Home</NavLink>
+                    <NavLink exact={true} activeClassName='is-active' className="link" to="/about" >About Us</NavLink>
+                    <NavLink exact={true} activeClassName='is-active' className="link" to="/services" >Services</NavLink>
+                    <NavLink exact={true} activeClassName='is-active' className="link" to="/technologies" >Technologies</NavLink>
+                    <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Blog</NavLink>
+                    <NavLink exact={true} activeClassName='is-active' className="link" to="/contacto">Contact</NavLink>
+                </nav>
+              </Grid>
+            </Hidden>
+            {/* Nav for XS devices */}
+            <Hidden smUp>
               <nav>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/home">Home</NavLink>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >About Us</NavLink>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Services</NavLink>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Technologies</NavLink>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Blog</NavLink>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/contacto">Contact</NavLink>
+                <Menu className="icon"/>
+                <NavLink exact={true} activeClassName='is-active' className="link" to="/home"><Home className="icon"/></NavLink>
               </nav>
-            </Grid>
+            </Hidden>
           </Grid>
         </Grid>
       </header>

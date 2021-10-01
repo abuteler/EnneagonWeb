@@ -25,6 +25,7 @@ header {
     .UserMenu {
       padding: 9px 9px 9px 0;
       // align-self: flex-end;
+      display: none;
       .link, .icon {
         color: white;
         vertical-align: bottom;
@@ -55,7 +56,18 @@ header {
     }
   }
 }
-
+// SM devices
+@media (max-width: 960px) {
+  header {
+    .NavContainer {
+      nav {
+        a.link {
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+}
 @media (max-width: 625px) {
   header {
     .TopContainer {
@@ -66,8 +78,16 @@ header {
         }
       }
     }
+    .NavContainer {
+      nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 }
+// XS devices
 @media (max-width: 425px) {
   header {
     .TopContainer {
