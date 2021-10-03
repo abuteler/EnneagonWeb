@@ -49,7 +49,7 @@ header {
         font-family: "Open Sans";
         text-decoration: none;
         &.is-active {
-          border-bottom: 2px solid black;
+          border-bottom: 1px solid black;
           height: fit-content;
         }
       }
@@ -83,6 +83,36 @@ header {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        padding: 0 .5rem;
+        &.icons {
+          a.link {
+            font-size: 1rem;
+            border: 0;
+            margin: 9px;
+          }
+          svg.menu {
+            margin: 9px;
+          }
+        }
+        button {
+          padding: 0;
+          color: #000;
+        }
+      }
+    }
+  }
+  .MuiDrawer-root .MuiDrawer-paper {
+    background-color: #353535;
+    width: 200px;
+    padding: 20px 50px 0 30px;
+    a.link {
+      font-size: .9rem;
+      line-height: 2rem;
+      color: white;
+      text-decoration: none;
+      &.is-active {
+        border-bottom: 1px solid white;
+        height: fit-content;
       }
     }
   }

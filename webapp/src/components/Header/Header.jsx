@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 
-import { Grid, Hidden } from '@material-ui/core/';
+import { Grid, Hidden, IconButton, Drawer } from '@material-ui/core/';
 import { AccountBox, AccessTime, Home, Menu } from '@material-ui/icons';
 
 import './Header.scss';
@@ -12,9 +12,17 @@ import { ReactComponent as EnneagonStudiosSm } from '../../assets/img/Typography
 import { ReactComponent as EnneagonStudiosSmSubtitle } from '../../assets/img/Typography9S_sm_subtitle.svg';
 
 class Header extends React.Component {
-  
-  render () {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMenuOpen: false
+    }
+  }
 
+  toggleMenu = status => this.setState({isMenuOpen: status})
+
+  render () {
+    const { isMenuOpen } = this.state;
     return (
       <header>
         <Grid container justifyContent="center">
@@ -30,9 +38,9 @@ class Header extends React.Component {
               </Hidden>
             </Grid>
             <Grid item container xs={12} lg={2} className="UserMenu" justifyContent="flex-end" alignContent="flex-end" alignItems="flex-end">
-              <NavLink exact={true} activeClassName='is-active' className="link" to="/">Clientes</NavLink>
-              <NavLink exact={true} activeClassName='is-active' className="link" to="/timelog"><AccessTime className="icon"/></NavLink>
-              <NavLink exact={true} activeClassName='is-active' className="link" to="/"><AccountBox className="icon"/></NavLink>
+              <NavLink exact={true} activeClassName="is-active" className="link" to="/">Clientes</NavLink>
+              <NavLink exact={true} activeClassName="is-active" className="link" to="/timelog"><AccessTime className="icon"/></NavLink>
+              <NavLink exact={true} activeClassName="is-active" className="link" to="/"><AccountBox className="icon"/></NavLink>
             </Grid>
           </Grid>
           <Grid item container xs={12} justifyContent="center" className="NavContainer">
@@ -40,20 +48,30 @@ class Header extends React.Component {
             <Hidden xsDown>
               <Grid item lg={6}>
                 <nav>
-                    <NavLink exact={true} activeClassName='is-active' className="link" to="/home">Home</NavLink>
-                    <NavLink exact={true} activeClassName='is-active' className="link" to="/about" >About Us</NavLink>
-                    <NavLink exact={true} activeClassName='is-active' className="link" to="/services" >Services</NavLink>
-                    <NavLink exact={true} activeClassName='is-active' className="link" to="/technologies" >Technologies</NavLink>
-                    <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Blog</NavLink>
-                    <NavLink exact={true} activeClassName='is-active' className="link" to="/contacto">Contact</NavLink>
+                    <NavLink exact={true} activeClassName="is-active" className="link" to="/home">Home</NavLink>
+                    <NavLink exact={true} activeClassName="is-active" className="link" to="/about" >About Us</NavLink>
+                    <NavLink exact={true} activeClassName="is-active" className="link" to="/services" >Services</NavLink>
+                    <NavLink exact={true} activeClassName="is-active" className="link" to="/technologies" >Technologies</NavLink>
+                    <NavLink exact={true} activeClassName="is-active" className="link" to="/blog" >Blog</NavLink>
+                    <NavLink exact={true} activeClassName="is-active" className="link" to="/contacto">Contact</NavLink>
                 </nav>
               </Grid>
             </Hidden>
             {/* Nav for XS devices */}
             <Hidden smUp>
-              <nav>
-                <Menu className="icon"/>
-                <NavLink exact={true} activeClassName='is-active' className="link" to="/home"><Home className="icon"/></NavLink>
+              <nav className="icons">
+                <NavLink exact={true} activeClassName="is-active" className="link" to="/home"><Home className="icon"/></NavLink>
+                <IconButton aria-label="menu" onClick={() => this.toggleMenu(!isMenuOpen)}>
+                  <Menu className="menu icon"/>
+                </IconButton>
+                <Drawer anchor="right" open={isMenuOpen} onClose={() => this.toggleMenu(!isMenuOpen)}>
+                  <NavLink exact={true} activeClassName="is-active" className="link" to="/home">Home</NavLink>
+                  <NavLink exact={true} activeClassName='is-active' className="link" to="/about" >About Us</NavLink>
+                  <NavLink exact={true} activeClassName='is-active' className="link" to="/services" >Services</NavLink>
+                  <NavLink exact={true} activeClassName='is-active' className="link" to="/technologies" >Technologies</NavLink>
+                  <NavLink exact={true} activeClassName='is-active' className="link" to="/blog" >Blog</NavLink>
+                  <NavLink exact={true} activeClassName='is-active' className="link" to="/contacto">Contact</NavLink>
+                </Drawer>
               </nav>
             </Hidden>
           </Grid>
