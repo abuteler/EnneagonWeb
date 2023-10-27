@@ -1,35 +1,52 @@
+@import 'themes/9Scolors.scss';
+
+
 html, body, #root, .App, #App_Vistas {
   height: 100%;
   width: 100%;
+  min-width: 375px;
+  font-size: 18px;
 }
-.full-height {
-  height: 100%;
+header {
+  min-height: 22vh;
 }
-#VistaHome {
-  .InnerViewContainer {
-    padding-top: 45px;
-    background: white;
-  //   height: 720px;
+section.InnerViewContentContainer {
+  padding: 2rem 6rem;
+  h1, h2, h3 {
+    color: $dark-blue-font;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #7092A0;
+    margin-bottom: .5rem;
+  }
+  h2 {
+    color: $orange;
+    font-size: 1rem;
+  }
+  h3 {
+    font-size: .9rem;
+    margin: 0;
+    text-transform: capitalize;
+    text-shadow: none;
+  }
+  p {
+    text-align: justify;
+  }
+  min-height: 68vh;
+}
+
+// MD devices
+@media (max-width: 1280px) {
+  section.InnerViewContentContainer {
+    padding: 2rem;
   }
 }
-// footer {
-// 	position: absolute;
-// 	bottom: 0;
-// 	width: 100%;
-// 	height: 81px;
-// 	background: black;
-// 	color: white;
-// 	font-size: 18px;
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: flex-end;
-// 	span {
-// 		font-size: 16px;
-// 		letter-spacing: 1px;
-// 	}
-// 	img {
-// 		margin-left: 9px;
-// 		margin-right: 24px;
-// 		cursor: pointer;
-// 	}
-// }
+// SM devices
+@media (max-width: 960px) {
+  section.InnerViewContentContainer {
+    padding: .5rem 2rem;
+  }
+}
+// XS devices
+@media (max-width: 425px) {
+}
