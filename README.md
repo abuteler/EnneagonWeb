@@ -16,6 +16,7 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Credits
-This project is built with [Next.js](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.com/), and was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project:
+- was designed using [Figma](https://www.figma.com/).
+- was built with [Next.js](https://nextjs.org/), [TailwindCSS](https://tailwindcss.com/), and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+- uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
