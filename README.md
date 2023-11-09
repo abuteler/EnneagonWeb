@@ -4,9 +4,11 @@ This is the institutional website for [EnneagonStudios](https://www.enneagonstud
 ## To run it locally
 
 1. Clone this repo
-2. Install dependencies: `yarn`
+2. Install dependencies by running: 
+```bash
+yarn
+```
 3. Run the development server:
-
 ```bash
 yarn dev
 ```
