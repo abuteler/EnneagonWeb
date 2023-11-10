@@ -1,0 +1,9 @@
+[
+  {
+    "id": "someuniqueid",
+    "title": "Foo Bar",
+    "body": "<p>Lorem ipsum bla bla bla</p>",
+    "dateCreated": "10/11/2023",
+    "dateModified": "10/11/2023"
+  }
+]
