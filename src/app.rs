@@ -21,6 +21,7 @@ pub fn App() -> impl IntoView {
                 <Routes>
                     <Route path="" view=Landing/>
                     <Route path="/soon" view=ComingSoon/>
+                    <Route path="/vectris" view=Vectris/>
                     // <Route path="/home" view=HomePage/>
                     <Route path="/*any" view=NotFound/>
                 </Routes>
