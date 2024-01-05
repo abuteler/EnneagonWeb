@@ -762,7 +762,7 @@ dependencies = [
 
 [[package]]
 name = "enneagon-web"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "actix-files",
  "actix-web",
@@ -773,6 +773,7 @@ dependencies = [
  "leptos_actix",
  "leptos_meta",
  "leptos_router",
+ "rand",
  "wasm-bindgen",
 ]
 
