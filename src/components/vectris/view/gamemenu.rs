@@ -10,19 +10,19 @@ pub fn Menu() -> impl IntoView {
             state.status = status
         },
     );
-    logging::log!("this runs fine");
+    
     let start_game = move |_| {
-      logging::log!("this doesn't ever, not even bound to an anchor, or a button");
       set_status.set(Status::Playing)
     };
 
     view! {
       <section id="menu">
         <nav>
-          <h2>Menu</h2>
-          <ul id="main-menu">
-            <li on:click=start_game>Play</li>
+          <ul class="flex flex-col gap-3 items-left border-2 rounded p-6 px-12 text-xl font-semibold font-mono bg-gradient-to-r from-sky-500 to-sky-900">
+            <li><a href="#play" on:click=start_game>Play</a></li>
+            <li><hr/></li>
             <li>About</li>
+            <li><hr/></li>
             <li>Credits</li>
           </ul>
         </nav>

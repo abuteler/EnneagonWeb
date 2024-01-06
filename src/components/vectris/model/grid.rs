@@ -4,6 +4,7 @@ use super::{CELLS_PER_ROW,CELLS_PER_COL};
 pub struct Grid {
     pub cells_per_row: u8,
     pub cells_per_col: u8,
+    // pub the_matrix: [] array vs vec?
 }
 
 impl Grid {
