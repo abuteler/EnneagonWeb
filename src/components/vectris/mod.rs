@@ -8,8 +8,8 @@ pub use view::*;
 use leptos::*;
 
 
-pub const CELLS_PER_ROW: u8 = 10;
-pub const CELLS_PER_COL: u8 = 16;
+pub const GRID_COLS: u8 = 10;
+pub const GRID_ROWS: u8 = 16;
 
 #[component]
 pub fn Vectris() -> impl IntoView {
