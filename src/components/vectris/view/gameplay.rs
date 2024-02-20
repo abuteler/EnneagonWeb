@@ -21,11 +21,12 @@ pub fn Game() -> impl IntoView {
       // }
   });
   on_cleanup(move || handler.remove());
+
   view! {
     <section id="game-canvas">
       <GameNav />
       <GameCanvas />
-      <p>Pressed key: <span class="text-sky-400">{ move || key_pressed.get() }</span></p>
+      <p>Pressed key code: <span class="text-sky-400">{ move || key_pressed.get() }</span></p>
     </section>
   }
 }
