@@ -1,8 +1,8 @@
-mod gamemenu;
+mod mainmenu;
 mod gameplay;
-mod ingamemenu;
+mod gamemenu;
 mod gamecanvas;
-pub use gamemenu::Menu;
-pub use gameplay::Game;
-pub use ingamemenu::GameNav;
+pub use mainmenu::MainMenu;
+pub use gamemenu::GameMenu;
+pub use gameplay::GamePlay;
 pub use gamecanvas::GameCanvas;

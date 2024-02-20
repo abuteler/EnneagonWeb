@@ -28,9 +28,9 @@ pub fn Vectris() -> impl IntoView {
       </header>
       <Show
         when= move || matches!(status.get(), Status::InMenus)
-        fallback= move || view! { <Game /> }
+        fallback= move || view! { <GamePlay /> }
       >
-        <Menu />
+        <MainMenu />
       </Show>
     </main>
   }

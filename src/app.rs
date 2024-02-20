@@ -10,9 +10,9 @@ pub fn App() -> impl IntoView {
     
     // logging::log!("foo bar");
     view! {
+        <Stylesheet id="leptos" href="/pkg/enneagon_web.css"/>
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
-        <Stylesheet id="leptos" href="/pkg/enneagon_web.css"/>
 
         // sets the document title
         <Title text="Welcome to EnneagonStudios"/>

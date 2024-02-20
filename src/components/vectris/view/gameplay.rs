@@ -1,12 +1,9 @@
 use leptos::*;
-use super::{GameNav, GameCanvas};
-use leptos::leptos_dom::{
-  ev::{keydown, KeyboardEvent},
-  helpers::window_event_listener,
-};
+use super::{GameMenu, GameCanvas};
+use leptos::leptos_dom::ev::{keydown, KeyboardEvent};
 
 #[component]
-pub fn Game() -> impl IntoView {
+pub fn GamePlay() -> impl IntoView {
   // set listeners for game controls
   let (key_pressed, set_key_pressed) = create_signal(String::new());
   let handler = window_event_listener(keydown, move |ev: KeyboardEvent| {
@@ -24,7 +21,7 @@ pub fn Game() -> impl IntoView {
 
   view! {
     <section id="game-canvas">
-      <GameNav />
+      <GameMenu />
       <GameCanvas />
       <p>Pressed key code: <span class="text-sky-400">{ move || key_pressed.get() }</span></p>
     </section>
