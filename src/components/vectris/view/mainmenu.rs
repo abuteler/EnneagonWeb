@@ -19,7 +19,7 @@ pub fn MainMenu() -> impl IntoView {
       <section id="menu">
         <nav>
           <ul class="flex flex-col gap-3 items-left border-2 rounded p-6 px-12 text-xl font-semibold font-mono bg-gradient-to-r from-sky-500 to-sky-900">
-            <li><a href="#play" on:click=start_game>Play</a></li>
+            <li><a href="" on:click=start_game>Play</a></li>
             <li><hr/></li>
             <li>About</li>
             <li><hr/></li>

@@ -15,7 +15,7 @@ impl GameState {
         let mut m: [[Cell; GRID_COLS as usize]; GRID_ROWS as usize] = Default::default();
         for r in 0..GRID_ROWS-1 {
             for c in 0..GRID_COLS-1 {
-                m[r as usize][c as usize] = Cell::new(r, c, false, None);
+                m[r as usize][c as usize] = Cell::new(r, c, None);
             }
         };
         Self {

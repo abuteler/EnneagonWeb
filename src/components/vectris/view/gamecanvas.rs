@@ -1,4 +1,4 @@
-use leptos::*;
+use leptos::{logging::log, *};
 
 use super::super::{GameState, Cell, Color};
 
@@ -7,26 +7,47 @@ pub fn GameCanvas() -> impl IntoView {
   let state = expect_context::<RwSignal<GameState>>();
   let matrix = create_read_slice(state, |state| state.matrix);
 
+  let iterable_matrix = move || matrix().into_iter().enumerate();
+
+  create_effect(move |_| {
+    log!("hey");
+    matrix().into_iter().enumerate().for_each(|el| {
+      log!("row {:?} in create_effect: {:?}", el.0, el.1);
+    });
+    matrix()
+  });
+
   view! {
     <section id="game-canvas" class="border-solid border-2 border-white p-1 bg-slate-100">
       <For
-        each= move || matrix.get().into_iter().enumerate()
-        key=|(index, row)| *index
-        children= move |(index, row)| {
-            // let row = create_memo(move |_| {
-            //   matrix.with(|rows| rows.get(index).map(|r| r).expect("rows to be well defined"))
+        each= move || matrix().into_iter().enumerate()
+        key=|(index, _row)| *index
+        children= move |(r_index, _)| {
+            let row = create_memo(move |_| {
+              matrix.with(|matrix| matrix.get(r_index).map(|r| r))
+            });
+            // create_effect(move |_| {
+            //   log!("hey row {:?} {:?}", r_index, row);
+            //   matrix() // RECIBE el update, pero no actualiza el contenido de row !!
+            //   // iterable_matrix();
+            //   // row
             // });
             view! {
               <div class="flex flex-row gap-px pb-px">
                 <For
-                  each= move || row.into_iter().enumerate()
-                  key=|(index, cell)| cell.coordinates
-                  children= move |(index, cell)| {
-                    // let memoized_cell = create_memo(move |_| {
-                    //   row[index]
-                    // });
+                  each= move || row.get().unwrap().into_iter().enumerate()
+                  key=|(index, cell)| index
+                  children= move |(c_index, cell)| {
+                    let memoized_cell = create_memo(move |_| {
+                      matrix.with(|matrix| matrix.get(r_index).map(|r| r[c_index]).expect("errored because cell"))
+                    });
+                    create_effect(move |_| {
+                      log!(" > hey cell {:?} {:?}", c_index, cell);
+                      iterable_matrix();
+                      cell
+                    });
                     view! {
-                      <CellView cell=cell />
+                      <CellView cell=memoized_cell />
                     }
                   }
                 />
@@ -39,8 +60,8 @@ pub fn GameCanvas() -> impl IntoView {
 }
 
 #[component]
-pub fn CellView(cell: Cell) -> impl IntoView {
-  let Cell { coordinates, filled, color} = cell;
+pub fn CellView(cell: Memo<Cell>) -> impl IntoView {
+  let Cell { coordinates, color} = cell.get();
   let shared = "w-7 h-7";
   let computed = match color {
     Some(Color::Violet) => format!("{} bg-[rgb(150,0,160)]", shared),
@@ -55,7 +76,10 @@ pub fn CellView(cell: Cell) -> impl IntoView {
   let (x, y) = coordinates;
   view! {
     <Show
-      when= move || filled
+      when= move || match color {
+        Some(_) => true,
+        None => false
+      }
       fallback= move || view! { <EmptyCell /> }
     >
       <ShadedCell classes=computed.clone() />
