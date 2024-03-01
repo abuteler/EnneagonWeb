@@ -764,7 +764,7 @@ dependencies = [
  "actix-files",
  "actix-web",
  "console_error_panic_hook",
- "http 0.2.11",
+ "http 1.0.0",
  "leptos",
  "leptos_actix",
  "leptos_meta",
