@@ -1,28 +1,30 @@
 
+use leptos::{create_rw_signal, RwSignal};
+
 use super::{Shape, Status, Cell, GRID_COLS, GRID_ROWS};
 
 #[derive(Copy, Clone, Debug)]
 pub struct GameState {
-    pub burned_lines: u32,
-    pub current_shape: Shape,
-    pub next_shape: Shape,
-    pub status: Status,
-    pub matrix: [[Cell; GRID_COLS as usize]; GRID_ROWS as usize],
+    pub burned_lines: RwSignal<u32>,
+    pub current_shape: RwSignal<Shape>,
+    pub next_shape: RwSignal<Shape>,
+    pub status: RwSignal<Status>,
+    pub matrix: [[RwSignal<Cell>; GRID_COLS as usize]; GRID_ROWS as usize],
 }
 
 impl GameState {
     pub fn new() -> Self {
-        let mut m: [[Cell; GRID_COLS as usize]; GRID_ROWS as usize] = Default::default();
+        let mut m: [[RwSignal<Cell>; GRID_COLS as usize]; GRID_ROWS as usize] = Default::default();
         for r in 0..GRID_ROWS-1 {
             for c in 0..GRID_COLS-1 {
-                m[r as usize][c as usize] = Cell::new(r, c, None);
+                m[r as usize][c as usize] = create_rw_signal(Cell::new(r, c, None));
             }
         };
         Self {
-            burned_lines: 0,
-            current_shape: Shape::default(),
-            next_shape: Shape::default(),
-            status: Status::InMenus,
+            burned_lines: create_rw_signal(0),
+            current_shape: create_rw_signal(Shape::default()),
+            next_shape: create_rw_signal(Shape::default()),
+            status: create_rw_signal(Status::InMenus),
             matrix: m
         }
     }

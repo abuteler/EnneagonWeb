@@ -3,16 +3,10 @@ use super::super::{GameState, Status};
 
 #[component]
 pub fn MainMenu() -> impl IntoView {
-    let state = expect_context::<RwSignal<GameState>>();
-    let set_status = create_write_slice(
-        state,
-        |state, status| {
-            state.status = status
-        },
-    );
+    let status = expect_context::<GameState>().status;
     
     let start_game = move |_| {
-      set_status.set(Status::Playing)
+      status.set(Status::Playing)
     };
 
     view! {
