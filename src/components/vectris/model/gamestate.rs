@@ -9,15 +9,15 @@ pub struct GameState {
     pub current_shape: RwSignal<Shape>,
     pub next_shape: RwSignal<Shape>,
     pub status: RwSignal<Status>,
-    pub matrix: [[RwSignal<Cell>; GRID_COLS as usize]; GRID_ROWS as usize],
+    pub matrix: [[RwSignal<Cell>; GRID_COLS]; GRID_ROWS],
 }
 
 impl GameState {
     pub fn new() -> Self {
-        let mut m: [[RwSignal<Cell>; GRID_COLS as usize]; GRID_ROWS as usize] = Default::default();
+        let mut m: [[RwSignal<Cell>; GRID_COLS]; GRID_ROWS] = Default::default();
         for r in 0..GRID_ROWS-1 {
             for c in 0..GRID_COLS-1 {
-                m[r as usize][c as usize] = create_rw_signal(Cell::new(r, c, None));
+                m[r][c] = create_rw_signal(Cell::new(r, c, None));
             }
         };
         Self {

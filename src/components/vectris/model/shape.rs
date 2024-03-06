@@ -1,6 +1,6 @@
 use super::{Cell, Color, GRID_COLS};
 
-#[derive(Copy, Clone, Debug, Default)]
+#[derive(Copy, Clone, Debug)]
 pub struct Shape {
     pub cells: [Cell; 4],
 }
@@ -9,8 +9,8 @@ impl Shape {
     pub fn new() -> Self {
         use rand::prelude::*;
         // randomize a number between 1 and 7
-        let num: u8 = rand::thread_rng().gen_range(1..7);
-        let x: u8 = GRID_COLS / 2;
+        let num: usize = rand::thread_rng().gen_range(1..7);
+        let x: usize = GRID_COLS / 2 - 1;
         match num {
             // Square
             1 => Shape {
@@ -76,5 +76,11 @@ impl Shape {
                 ],
             }
         }
+    }
+}
+
+impl Default for Shape {
+    fn default() -> Self {
+        Self::new()
     }
 }

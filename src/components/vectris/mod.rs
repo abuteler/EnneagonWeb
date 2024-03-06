@@ -6,8 +6,8 @@ pub use view::*;
 // pub use controller::Controls;
 use leptos::*;
 
-pub const GRID_COLS: u8 = 10;
-pub const GRID_ROWS: u8 = 16;
+pub const GRID_COLS: usize = 10;
+pub const GRID_ROWS: usize = 16;
 
 #[component]
 pub fn Vectris() -> impl IntoView {
@@ -22,7 +22,7 @@ pub fn Vectris() -> impl IntoView {
   view! {
     <main class="relative flex min-h-[575px] h-screen flex-col items-center gap-12 p-8 md:p-24">
       <header>
-        <h1 class="text-3xl text-orange-300 font-mono">Vectris</h1>
+        <h1 class="text-3xl text-orange-400 font-mono">Vectris</h1>
       </header>
       <Show
         when= move || matches!(status.get(), Status::InMenus)
