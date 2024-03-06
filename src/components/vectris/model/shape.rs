@@ -1,4 +1,4 @@
-use super::{Cell, Color, GRID_COLS};
+use super::{Cell, CellState, Color, GRID_COLS};
 
 #[derive(Copy, Clone, Debug)]
 pub struct Shape {
@@ -15,64 +15,64 @@ impl Shape {
             // Square
             1 => Shape {
                 cells: [
-                    Cell::new(x, 0, Some(Color::Violet)),
-                    Cell::new(x, 1, Some(Color::Violet)),
-                    Cell::new(x + 1, 0, Some(Color::Violet)),
-                    Cell::new(x + 1, 1, Some(Color::Violet)),
+                    Cell::new(x, 0, Some(Color::Violet), CellState::Fluid),
+                    Cell::new(x, 1, Some(Color::Violet), CellState::Fluid),
+                    Cell::new(x + 1, 0, Some(Color::Violet), CellState::Fluid),
+                    Cell::new(x + 1, 1, Some(Color::Violet), CellState::Fluid),
                 ],
             },
             // Column
             2 => Shape {
                 cells: [
-                    Cell::new(x, 0, Some(Color::Green)),
-                    Cell::new(x, 1, Some(Color::Green)),
-                    Cell::new(x, 2, Some(Color::Green)),
-                    Cell::new(x, 3, Some(Color::Green)),
+                    Cell::new(x, 0, Some(Color::Green), CellState::Fluid),
+                    Cell::new(x, 1, Some(Color::Green), CellState::Fluid),
+                    Cell::new(x, 2, Some(Color::Green), CellState::Fluid),
+                    Cell::new(x, 3, Some(Color::Green), CellState::Fluid),
                 ],
             },
             // Left L
             3 => Shape {
                 cells: [
-                    Cell::new(x+1, 0, Some(Color::Blue)),
-                    Cell::new(x+1, 1, Some(Color::Blue)),
-                    Cell::new(x+1, 2, Some(Color::Blue)),
-                    Cell::new(x, 2, Some(Color::Blue)),
+                    Cell::new(x+1, 0, Some(Color::Blue), CellState::Fluid),
+                    Cell::new(x+1, 1, Some(Color::Blue), CellState::Fluid),
+                    Cell::new(x+1, 2, Some(Color::Blue), CellState::Fluid),
+                    Cell::new(x, 2, Some(Color::Blue), CellState::Fluid),
                 ],
             },
             // Right L
             4 => Shape {
                 cells: [
-                    Cell::new(x, 0, Some(Color::Yellow)),
-                    Cell::new(x, 1, Some(Color::Yellow)),
-                    Cell::new(x, 2, Some(Color::Yellow)),
-                    Cell::new(x+1, 2, Some(Color::Yellow)),
+                    Cell::new(x, 0, Some(Color::Yellow), CellState::Fluid),
+                    Cell::new(x, 1, Some(Color::Yellow), CellState::Fluid),
+                    Cell::new(x, 2, Some(Color::Yellow), CellState::Fluid),
+                    Cell::new(x+1, 2, Some(Color::Yellow), CellState::Fluid),
                 ],
             },
             // Left "lightning"
             5 => Shape {
                 cells: [
-                    Cell::new(x+1, 0, Some(Color::Red)),
-                    Cell::new(x+1, 1, Some(Color::Red)),
-                    Cell::new(x, 1, Some(Color::Red)),
-                    Cell::new(x, 2, Some(Color::Red)),
+                    Cell::new(x+1, 0, Some(Color::Red), CellState::Fluid),
+                    Cell::new(x+1, 1, Some(Color::Red), CellState::Fluid),
+                    Cell::new(x, 1, Some(Color::Red), CellState::Fluid),
+                    Cell::new(x, 2, Some(Color::Red), CellState::Fluid),
                 ],
             },
             // Right "lightning"
             6 => Shape {
                 cells: [
-                    Cell::new(x, 0, Some(Color::LightBlue)),
-                    Cell::new(x, 1, Some(Color::LightBlue)),
-                    Cell::new(x+1, 1, Some(Color::LightBlue)),
-                    Cell::new(x+1, 2, Some(Color::LightBlue)),
+                    Cell::new(x, 0, Some(Color::LightBlue), CellState::Fluid),
+                    Cell::new(x, 1, Some(Color::LightBlue), CellState::Fluid),
+                    Cell::new(x+1, 1, Some(Color::LightBlue), CellState::Fluid),
+                    Cell::new(x+1, 2, Some(Color::LightBlue), CellState::Fluid),
                 ],
             },
             // Tripod; num = 7; wildcard to avoid compiler complaints.
             _ => Shape { 
                 cells: [
-                    Cell::new(x, 0, Some(Color::Pink)),
-                    Cell::new(x, 1, Some(Color::Pink)),
-                    Cell::new(x, 2, Some(Color::Pink)),
-                    Cell::new(x+1, 1, Some(Color::Pink)),
+                    Cell::new(x, 0, Some(Color::Pink), CellState::Fluid),
+                    Cell::new(x, 1, Some(Color::Pink), CellState::Fluid),
+                    Cell::new(x, 2, Some(Color::Pink), CellState::Fluid),
+                    Cell::new(x+1, 1, Some(Color::Pink), CellState::Fluid),
                 ],
             }
         }

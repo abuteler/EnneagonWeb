@@ -9,11 +9,13 @@ pub fn GameCanvas() -> impl IntoView {
   let neo = game_state.current_shape;
 
   create_effect(move |_| {
+    // subscribed to changes in the current_shape signal
     log!(" > neo: {:?}", neo.get());
     for cell in neo.get().cells.into_iter() {
-      let Cell { coordinates: (x, y), color } = cell;
+      let Cell { coordinates: (x, y), color, state } = cell;
       matrix[y][x].update(|m_cell| {
         m_cell.color = color;
+        m_cell.state = state;
       });
     };
   });

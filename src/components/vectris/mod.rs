@@ -1,9 +1,9 @@
 mod model;
 mod view;
-mod controller;
 pub use model::*;
 pub use view::*;
-// pub use controller::Controls;
+mod controller;
+pub use controller::*;
 use leptos::*;
 
 pub const GRID_COLS: usize = 10;
