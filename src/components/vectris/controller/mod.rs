@@ -1,10 +1,2 @@
-pub trait Controls {
-  fn on_key_up (&self) {
-  }
-  fn on_key_down (&self) {
-  }
-  fn on_key_left (&self) {
-  }
-  fn on_key_right (&self) {
-  }
-}
+mod navigationsystem;
+pub use navigationsystem::Controls;
