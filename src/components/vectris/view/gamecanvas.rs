@@ -1,19 +1,21 @@
 use leptos::{logging::log, *};
 
+use crate::components::vectris::CellState;
+
 use super::super::{GameState, Cell, Color};
 
 #[component]
 pub fn GameCanvas() -> impl IntoView {
   let game_state = expect_context::<GameState>();
   let matrix = game_state.matrix;
-  let neo = game_state.current_shape;
+  let avatar = game_state.current_shape;
 
   create_effect(move |_| {
     // subscribed to changes in the current_shape signal
-    log!(" > neo: {:?}", neo.get());
-    for cell in neo.get().cells.into_iter() {
-      let Cell { coordinates: (x, y), color, state } = cell;
-      matrix[y][x].update(|m_cell| {
+    // log!(" > avatar: {:?}", avatar.get());
+    for cell in avatar.get().cells.into_iter() {
+      let Cell { coordinates: (col, row), color, state } = cell;
+      matrix[row][col].update(|m_cell| {
         m_cell.color = color;
         m_cell.state = state;
       });
@@ -47,8 +49,10 @@ pub fn GameCanvas() -> impl IntoView {
 
 #[component]
 pub fn CellView(cell: RwSignal<Cell>) -> impl IntoView {
+  let game_state = expect_context::<GameState>();
+  let neoize = game_state.neoize;
   let shade = create_memo(move |_| {
-    let base_style = "w-7 h-7";
+    let base_style = "w-7 h-7 flex justify-center text-amber-500";
     match cell.get().color {
       Some(Color::Violet) => format!("{} bg-[rgb(150,0,160)]", base_style),
       Some(Color::Green) => format!("{} bg-[rgb(0,150,0)]", base_style),
@@ -60,8 +64,19 @@ pub fn CellView(cell: RwSignal<Cell>) -> impl IntoView {
       None => base_style.to_string(),
     }
   });
+  let cell_state = move || {
+    if neoize.get() {
+      match cell.get().state {
+        CellState::Solid => "s",
+        CellState::Empty => "e",
+        CellState::Fluid => "f",
+        CellState::Exploding => "*",
+      }
+    } else { "" }
+  };
   view! {
     <div class={shade}>
+      {cell_state}
     </div>
   }
 }

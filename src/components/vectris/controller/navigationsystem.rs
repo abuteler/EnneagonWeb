@@ -11,4 +11,5 @@ pub trait ControlState {
   fn on_key_down (&self);
   fn on_key_left (&self);
   fn on_key_right (&self);
+  fn on_key_free_dive (&self);
 }

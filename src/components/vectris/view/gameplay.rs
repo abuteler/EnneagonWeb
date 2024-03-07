@@ -23,7 +23,8 @@ pub fn GamePlay() -> impl IntoView {
       65 => state.on_key_left(),
       68 => state.on_key_right(),
       83 => state.on_key_down(),
-      // TODO: add space bar to free dive
+      // space bar to free dive
+      32 => state.on_key_free_dive(),
       _ => {}
     };
   });

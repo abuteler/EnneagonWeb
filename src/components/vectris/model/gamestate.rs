@@ -11,6 +11,7 @@ pub struct GameState {
   pub next_shape: RwSignal<Shape>,
   pub status: RwSignal<Status>,
   pub matrix: [[RwSignal<Cell>; GRID_COLS]; GRID_ROWS],
+  pub neoize: RwSignal<bool>,
 }
 
 impl GameState {
@@ -26,7 +27,8 @@ impl GameState {
       current_shape: create_rw_signal(Shape::default()),
       next_shape: create_rw_signal(Shape::default()),
       status: create_rw_signal(Status::InMenus),
-      matrix: m
+      matrix: m,
+      neoize: create_rw_signal(false),
     }
   }
 }
@@ -57,14 +59,43 @@ impl ControlState for GameState {
   }
   fn next_cycle (&self) {
     self.solidify_shape(self.current_shape.get());
+    // TODO: check for complete lines, explode them, update score
     self.current_shape.set(self.next_shape.get());
     self.next_shape.set(Shape::new());
   }
   fn on_key_left (&self) {
-    log!(" > move left! <" );
+    let wall = 0;
+    let mut shape = self.current_shape.get();
+    let mut walled = false;
+    for cell in shape.cells.iter_mut() {
+      let (c, r) = cell.coordinates;
+      if c == wall || self.matrix[r][c-1].get().state == CellState::Solid {
+        walled = true;
+        break;
+      }
+      cell.coordinates.0 -= 1;
+    }
+    if !walled {
+      self.clear_coordinates(self.current_shape.get());
+      self.current_shape.set(shape);
+    }
   }
   fn on_key_right (&self) {
-    log!(" > move right! <" );
+    let wall = GRID_COLS;
+    let mut shape = self.current_shape.get();
+    let mut walled = false;
+    for cell in shape.cells.iter_mut() {
+      let (c, r) = cell.coordinates;
+      if c+1 == wall || self.matrix[r][c+1].get().state == CellState::Solid {
+        walled = true;
+        break;
+      }
+      cell.coordinates.0 += 1;
+    }
+    if !walled {
+      self.clear_coordinates(self.current_shape.get());
+      self.current_shape.set(shape);
+    }
   }
   fn on_key_up (&self) {
     let mut shape = self.current_shape.get();
@@ -95,24 +126,25 @@ impl ControlState for GameState {
     }
   }
   fn on_key_down (&self) {
-    log!(" > down! <" );
     let floor = GRID_ROWS;
     let mut shape = self.current_shape.get();
-    let mut grounded = false;
-
+    let mut already_grounded = false;
     for cell in shape.cells.iter_mut() {
-      let (col, row) = cell.coordinates;
-      if (row+1 == floor || self.matrix[row+1][col].get().state == CellState::Solid) {
-        grounded = true;
+      let (c, r) = cell.coordinates;
+      if r+1 == floor || self.matrix[r+1][c].get().state == CellState::Solid {
+        already_grounded = true;
         break;
       }
-      cell.coordinates.1 +=1;
+      cell.coordinates.1 += 1;
     }
-    if grounded {
-      self.next_cycle()
+    if already_grounded {
+      self.next_cycle();
     } else {
       self.clear_coordinates(self.current_shape.get());
-      self.current_shape.set(shape);  
-    };
+      self.current_shape.set(shape);
+    }
+  }
+  fn on_key_free_dive (&self) {
+    // TODO
   }
 }

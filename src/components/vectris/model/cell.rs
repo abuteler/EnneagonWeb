@@ -10,7 +10,7 @@ pub enum Color {
 }
 #[derive(Copy, Clone, Debug, PartialEq, Default)]
 pub enum CellState {
-    Empty, #[default]
+    #[default] Empty,
     Solid,
     Fluid,
     Exploding,

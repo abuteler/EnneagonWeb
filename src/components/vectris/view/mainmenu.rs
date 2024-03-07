@@ -18,6 +18,8 @@ pub fn MainMenu() -> impl IntoView {
             <li>About</li>
             <li><hr/></li>
             <li>Credits</li>
+            <li><hr/></li>
+            <li><a href="/">Back</a></li>
           </ul>
         </nav>
       </section>
