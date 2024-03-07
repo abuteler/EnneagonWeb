@@ -1,2 +1,2 @@
 mod navigationsystem;
-pub use navigationsystem::Controls;
+pub use navigationsystem::ControlState;

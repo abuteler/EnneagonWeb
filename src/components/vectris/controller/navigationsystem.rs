@@ -1,5 +1,10 @@
 use leptos::logging::log;
-pub trait Controls {
+use crate::components::vectris::Shape;
+
+pub trait ControlState {
+  fn clear_coordinates (&self, shape: Shape);
+  fn solidify_shape (&self, shape: Shape);
+  fn next_cycle (&self);
   fn on_key_up (&self) {
     log!(" > rotate shape! <" );
   }
