@@ -14,17 +14,17 @@ pub fn GamePlay() -> impl IntoView {
     set_key_pressed.set(key.to_string());
     match key {
       // arrows
-      38 => state.on_key_up(),
-      37 => state.on_key_left(),
-      39 => state.on_key_right(),
-      40 => state.on_key_down(),
+      38 => state.on_rotate(),
+      37 => state.on_move_left(),
+      39 => state.on_move_right(),
+      40 => state.on_move_down(),
       // wasd
-      87 => state.on_key_up(),
-      65 => state.on_key_left(),
-      68 => state.on_key_right(),
-      83 => state.on_key_down(),
+      87 => state.on_rotate(),
+      65 => state.on_move_left(),
+      68 => state.on_move_right(),
+      83 => state.on_move_down(),
       // space bar to free dive
-      32 => state.on_key_free_dive(),
+      32 => state.on_free_dive(),
       _ => {}
     };
   });

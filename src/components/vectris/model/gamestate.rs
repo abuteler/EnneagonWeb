@@ -1,7 +1,7 @@
 
-use leptos::{logging::log, *};
+use leptos::*;
 
-use super::{shape, Cell, CellState, Shape, Shapes, Status, GRID_COLS, GRID_ROWS};
+use super::{Cell, CellState, Shape, Shapes, Status, GRID_COLS, GRID_ROWS};
 use super::super::ControlState;
 
 #[derive(Copy, Clone, Debug)]
@@ -63,7 +63,7 @@ impl ControlState for GameState {
     self.current_shape.set(self.next_shape.get());
     self.next_shape.set(Shape::new());
   }
-  fn on_key_left (&self) {
+  fn on_move_left (&self) {
     let wall = 0;
     let mut shape = self.current_shape.get();
     let mut walled = false;
@@ -80,7 +80,7 @@ impl ControlState for GameState {
       self.current_shape.set(shape);
     }
   }
-  fn on_key_right (&self) {
+  fn on_move_right (&self) {
     let wall = GRID_COLS;
     let mut shape = self.current_shape.get();
     let mut walled = false;
@@ -97,35 +97,46 @@ impl ControlState for GameState {
       self.current_shape.set(shape);
     }
   }
-  fn on_key_up (&self) {
+  fn on_rotate (&self) {
     let mut shape = self.current_shape.get();
+    let mut illegal_rotation = false;
     if shape.class != Shapes::Square {
-      // log!(" > rotate: {:?}", shape);
       // step one: take the second cell's coordinates as my origin
-      let (origin_x, origin_y) = shape.cells[1].coordinates;
+      let (origin_c, origin_r) = shape.cells[1].coordinates;
       for cell in shape.cells.iter_mut() {
         // use of auxiliary signed coordinates b/c linear transformation will do (-y, x)
-        let (mut signed_x, mut signed_y): (isize, isize);
+        let (mut signed_c, mut signed_r): (isize, isize);
         // step two: offset all cells by the new "origin" coordinates
-        signed_x = cell.coordinates.0 as isize - origin_x as isize;
-        signed_y = cell.coordinates.1 as isize - origin_y as isize;
+        signed_c = cell.coordinates.0 as isize - origin_c as isize;
+        signed_r = cell.coordinates.1 as isize - origin_r as isize;
         // note that cell #2 will end up being (0,0)
         if cell.coordinates != (0,0) {
           // step three: apply the Linear Transformation (-y, x), which rotates 90 degrees counter clockwise
           // See http://en.wikipedia.org/wiki/Transformation_matrix#Examples_in_2D_graphics
-          (signed_x, signed_y) = (-signed_y, signed_x);
+          (signed_c, signed_r) = (-signed_r, signed_c);
         }
-        // step four: take back to their original coordinates in the matrix
-        cell.coordinates.0 = (signed_x + origin_x as isize) as usize;
-        cell.coordinates.1 = (signed_y + origin_y as isize) as usize;
+        // step four: return to original coordinates in the matrix
+        cell.coordinates.0 = (signed_c + origin_c as isize) as usize;
+        cell.coordinates.1 = (signed_r + origin_r as isize) as usize;
+        // step five: check for collisions before committing!
+        if cell.coordinates.0 > GRID_COLS-1 || cell.coordinates.1 > GRID_ROWS-1 {
+          // out of bounds
+          illegal_rotation = true;
+          break;
+        }
+        if self.matrix[cell.coordinates.1][cell.coordinates.0].get().state == CellState::Solid {
+          // trampling is not allowed
+          illegal_rotation = true;
+          break;
+        }
       }
-      // TODO: check for collisions!
-      self.clear_coordinates(self.current_shape.get());
-      self.current_shape.set(shape);
-
+      if !illegal_rotation {
+        self.clear_coordinates(self.current_shape.get());
+        self.current_shape.set(shape);
+      }
     }
   }
-  fn on_key_down (&self) {
+  fn on_move_down (&self) {
     let floor = GRID_ROWS;
     let mut shape = self.current_shape.get();
     let mut already_grounded = false;
@@ -144,7 +155,7 @@ impl ControlState for GameState {
       self.current_shape.set(shape);
     }
   }
-  fn on_key_free_dive (&self) {
+  fn on_free_dive (&self) {
     // TODO
   }
 }
