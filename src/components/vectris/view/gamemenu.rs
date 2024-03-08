@@ -6,6 +6,16 @@ pub fn GameMenu() -> impl IntoView {
   let state = expect_context::<GameState>();
   let status = state.status;
   let neoize = state.neoize;
+  let (toggle_label, set_toggle_label) = create_signal("Pause");
+  let toggle_pause = move |_| {
+    if status.get() == Status::Playing {
+      status.set(Status::Paused);
+      set_toggle_label("Resume");
+    } else {
+      status.set(Status::Playing);
+      set_toggle_label("Pause");
+    }
+  };
   let quit_game = move |_| {
     // reset state?
     status.set(Status::InMenus);
@@ -16,8 +26,8 @@ pub fn GameMenu() -> impl IntoView {
   view! {
     <nav>
       <ul class="flex flex-row gap-3 mb-2">
-        <li>Pause</li>
-        <li><a href="" on:click=quit_game>Quit</a></li>
+      <li><a href="" on:click=quit_game>Quit</a></li>
+      <li><a href="" on:click=toggle_pause>{toggle_label}</a></li>
         <li class="flex grow justify-end pr-3"><a href="" on:click=see_the_matrix>π</a></li>
       </ul>
     </nav>

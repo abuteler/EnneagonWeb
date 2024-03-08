@@ -1,6 +1,5 @@
 
 use leptos::*;
-
 use super::{Cell, CellState, Shape, Shapes, Status, GRID_COLS, GRID_ROWS};
 use super::super::ControlState;
 
@@ -136,7 +135,7 @@ impl ControlState for GameState {
       }
     }
   }
-  fn on_move_down (&self) {
+  fn on_move_down (&self) -> bool {
     let floor = GRID_ROWS;
     let mut shape = self.current_shape.get();
     let mut already_grounded = false;
@@ -154,8 +153,12 @@ impl ControlState for GameState {
       self.clear_coordinates(self.current_shape.get());
       self.current_shape.set(shape);
     }
+    already_grounded
   }
   fn on_free_dive (&self) {
-    // TODO
+    loop {
+      let grounded = self.on_move_down();
+      if grounded { break; }
+    }
   }
 }

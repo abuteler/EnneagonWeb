@@ -8,7 +8,7 @@ pub trait ControlState {
   fn on_rotate (&self) {
     log!(" > rotate shape! <" );
   }
-  fn on_move_down (&self);
+  fn on_move_down (&self) -> bool;
   fn on_move_left (&self);
   fn on_move_right (&self);
   fn on_free_dive (&self);
