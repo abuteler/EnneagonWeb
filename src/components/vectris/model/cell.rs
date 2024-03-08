@@ -10,7 +10,7 @@ pub enum Color {
 }
 #[derive(Copy, Clone, Debug, PartialEq, Default)]
 pub enum CellState {
-    Empty, #[default]
+    #[default] Empty,
     Solid,
     Fluid,
     Exploding,
@@ -24,9 +24,9 @@ pub struct Cell {
 }
 
 impl Cell {
-    pub fn new(x: usize, y: usize, color: Option<Color>, state: CellState) -> Self {
+    pub fn new(column: usize, row: usize, color: Option<Color>, state: CellState) -> Self {
         Self {
-            coordinates: (x, y),
+            coordinates: (column, row),
             color,
             state,
         }
