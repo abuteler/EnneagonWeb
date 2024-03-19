@@ -23,7 +23,7 @@ pub fn GameCanvas() -> impl IntoView {
   });
 
   view! {
-    <section id="game-canvas" class="border-solid border-8 border-white p-1 bg-slate-100 border-l-gray-300 border-b-sky-800 border-r-gray-400">
+    <section id="game-canvas" class="border-solid border-8 border-white p-[2px] bg-slate-100 border-l-gray-300 border-r-gray-400 border-b-vectris-floor">
       <For
         each= move || matrix.into_iter().enumerate()
         key=|(index, _row)| *index

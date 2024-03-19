@@ -13,6 +13,9 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        'vectris-floor': 'rgb(70 110 130)',
+      },
       keyframes: {
         blink: {
           '50%': { opacity: '0' },
