@@ -18,7 +18,7 @@ pub fn Vectris() -> impl IntoView {
 
   // i.e. get the status signal from the provided context to switch between Main Menu and Game modes
   let status = expect_context::<GameState>().status;
-  
+
   view! {
     <main class="relative flex min-h-[575px] h-screen flex-col items-center gap-12 p-8 md:p-24">
       <header>

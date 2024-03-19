@@ -1,8 +1,6 @@
 use leptos::*;
 
-use crate::components::vectris::CellState;
-
-use super::super::{GameState, Cell, Color};
+use crate::components::vectris::{GameState, Cell, CellView};
 
 #[component]
 pub fn GameCanvas() -> impl IntoView {
@@ -12,7 +10,6 @@ pub fn GameCanvas() -> impl IntoView {
 
   create_effect(move |_| {
     // subscribed to changes in the current_shape signal
-    // logging::log!(" > avatar: {:?}", avatar.get());
     for cell in avatar.get().cells.into_iter() {
       let Cell { coordinates: (col, row), color, state } = cell;
       matrix[row][col].update(|m_cell| {
@@ -35,7 +32,7 @@ pub fn GameCanvas() -> impl IntoView {
                   key=|(index, _cell)| *index
                   children= move |(_index, cell)| {
                     view! {
-                      <CellView cell=cell />
+                      <CellView cell=cell compact=false />
                     }
                   }
                 />
@@ -46,38 +43,3 @@ pub fn GameCanvas() -> impl IntoView {
       </section>
   }
 }
-
-#[component]
-pub fn CellView(cell: RwSignal<Cell>) -> impl IntoView {
-  let game_state = expect_context::<GameState>();
-  let neoize = game_state.neoize;
-  let shade = create_memo(move |_| {
-    let base_style = "w-7 h-7 flex m-[0.05rem] justify-center text-amber-500";
-    match cell.get().color {
-      Some(Color::Violet) => format!("{} bg-[rgb(150,0,160)]", base_style),
-      Some(Color::Green) => format!("{} bg-[rgb(0,150,0)]", base_style),
-      Some(Color::Blue) => format!("{} bg-[rgb(0,0,180)]", base_style),
-      Some(Color::Yellow) => format!("{} bg-[rgb(210,190,0)]", base_style),
-      Some(Color::Red) => format!("{} bg-[rgb(180,0,0)]", base_style),
-      Some(Color::LightBlue) => format!("{} bg-[rgb(140,180,210)]", base_style),
-      Some(Color::Pink) => format!("{} bg-[rgb(230,0,200)]", base_style),
-      None => base_style.to_string(),
-    }
-  });
-  let cell_state = move || {
-    if neoize.get() {
-      match cell.get().state {
-        CellState::Solid => "s",
-        CellState::Empty => "e",
-        CellState::Fluid => "f",
-        CellState::Exploding => "*",
-      }
-    } else { "" }
-  };
-  view! {
-    <div class={shade}>
-      {cell_state}
-    </div>
-  }
-}
-

@@ -2,7 +2,7 @@ use leptos::*;
 use leptos_use::{use_interval_fn, utils::Pausable};
 use crate::components::vectris::Status;
 
-use super::{GameMenu, GameCanvas};
+use super::{GameMenu, GameCanvas, UpNext};
 use super::super::{GameState, ControlState};
 use leptos::leptos_dom::ev::{keydown, KeyboardEvent};
 
@@ -57,8 +57,8 @@ pub fn GamePlay() -> impl IntoView {
       Status::Paused => { if is_active.get() { pause() } },
       Status::Playing => { if !is_active.get() { resume() } },
       Status::GameOver => {
-        if is_active.get() { pause() };
         /* TODO */
+        if is_active.get() { pause() };
       },
       _ => {},
     }
@@ -67,7 +67,10 @@ pub fn GamePlay() -> impl IntoView {
   view! {
     <section id="game-canvas">
       <GameMenu />
-      <GameCanvas />
+      <div class="flex">
+        <GameCanvas />
+        <UpNext />
+      </div>
       <p>Pressed key code: <span class="text-sky-400">{ move || key_pressed.get() }</span></p>
     </section>
   }
