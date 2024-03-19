@@ -1,4 +1,4 @@
-use leptos::{logging::log, *};
+use leptos::*;
 
 use crate::components::vectris::CellState;
 
@@ -12,7 +12,7 @@ pub fn GameCanvas() -> impl IntoView {
 
   create_effect(move |_| {
     // subscribed to changes in the current_shape signal
-    // log!(" > avatar: {:?}", avatar.get());
+    // logging::log!(" > avatar: {:?}", avatar.get());
     for cell in avatar.get().cells.into_iter() {
       let Cell { coordinates: (col, row), color, state } = cell;
       matrix[row][col].update(|m_cell| {
@@ -23,13 +23,13 @@ pub fn GameCanvas() -> impl IntoView {
   });
 
   view! {
-    <section id="game-canvas" class="border-solid border-2 border-white p-1 bg-slate-100">
+    <section id="game-canvas" class="border-solid border-8 border-white p-1 bg-slate-100 border-l-gray-300 border-b-sky-800 border-r-gray-400">
       <For
         each= move || matrix.into_iter().enumerate()
         key=|(index, _row)| *index
         children= move |(_index, row)| {
             view! {
-              <div class="flex flex-row gap-px pb-px">
+              <div class="flex flex-row">
                 <For
                   each= move || row.into_iter().enumerate()
                   key=|(index, _cell)| *index
@@ -52,7 +52,7 @@ pub fn CellView(cell: RwSignal<Cell>) -> impl IntoView {
   let game_state = expect_context::<GameState>();
   let neoize = game_state.neoize;
   let shade = create_memo(move |_| {
-    let base_style = "w-7 h-7 flex justify-center text-amber-500";
+    let base_style = "w-7 h-7 flex m-[0.05rem] justify-center text-amber-500";
     match cell.get().color {
       Some(Color::Violet) => format!("{} bg-[rgb(150,0,160)]", base_style),
       Some(Color::Green) => format!("{} bg-[rgb(0,150,0)]", base_style),
