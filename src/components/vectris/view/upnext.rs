@@ -37,7 +37,7 @@ pub fn UpNext() -> impl IntoView {
       };
   });
   view! {
-    <section class="ml-4">
+    <section class="w-fit">
       <h2 class="mt-6 mb-3">Up next...</h2>
       <div class="border-solid border-[3px] bg-orange-100 border-vectris-upnext-border p-0 h-fit">
         <For

@@ -1,6 +1,6 @@
 use leptos::*;
 use leptos_use::{use_interval_fn, utils::Pausable};
-use crate::components::vectris::Status;
+use crate::components::vectris::{Scores, Status};
 
 use super::{GameMenu, GameCanvas, UpNext};
 use super::super::{GameState, ControlState};
@@ -65,11 +65,14 @@ pub fn GamePlay() -> impl IntoView {
   });
   on_cleanup(move || controls_handle.remove());
   view! {
-    <section id="game-canvas">
+    <section id="gameplay-container">
       <GameMenu />
-      <div class="flex">
+      <div class="flex gap-6">
         <GameCanvas />
-        <UpNext />
+        <section id="right-panel" class="flex flex-col gap-6">
+          <UpNext />
+          <Scores />
+        </section>
       </div>
       <p>Pressed key code: <span class="text-sky-400">{ move || key_pressed.get() }</span></p>
     </section>
