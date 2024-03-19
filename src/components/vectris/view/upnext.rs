@@ -24,7 +24,7 @@ pub fn UpNext() -> impl IntoView {
           });
         };
       };
-      for (i,cell) in next.get().cells.into_iter().enumerate() {
+      for cell in next.get().cells.into_iter() {
         let Cell { coordinates: (col, row), color, state } = cell;
         // adjust original cell coordinates to smaller canvas
         let row_ = row + 1; // because y = 0
