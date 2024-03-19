@@ -37,26 +37,29 @@ pub fn UpNext() -> impl IntoView {
       };
   });
   view! {
-    <section class="border-solid border-[2px] bg-orange-100 border-white p-0 h-fit ml-4">
-      <For
-        each= move || canvas.into_iter().enumerate()
-        key=|(index, _row)| *index
-        children= move |(_index, row)| {
-          view! {
-            <div class="flex flex-row">
-              <For
-                each= move || row.into_iter().enumerate()
-                key=|(index, _cell)| *index
-                children= move |(_index, cell)| {
-                  view! {
-                    <CellView cell=cell compact=true />
+    <section class="ml-4">
+      <h2 class="mt-6 mb-3">Up next...</h2>
+      <div class="border-solid border-[3px] bg-orange-100 border-vectris-upnext-border p-0 h-fit">
+        <For
+          each= move || canvas.into_iter().enumerate()
+          key=|(index, _row)| *index
+          children= move |(_index, row)| {
+            view! {
+              <div class="flex flex-row">
+                <For
+                  each= move || row.into_iter().enumerate()
+                  key=|(index, _cell)| *index
+                  children= move |(_index, cell)| {
+                    view! {
+                      <CellView cell=cell compact=true />
+                    }
                   }
-                }
-              />
-            </div>
+                />
+              </div>
+            }
           }
-        }
-      />
+        />
+      </div>
     </section>
   }
 }

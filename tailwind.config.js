@@ -15,6 +15,7 @@ module.exports = {
       },
       colors: {
         'vectris-floor': 'rgb(70 110 130)',
+        'vectris-upnext-border': 'rgb(77 150 187)',
       },
       keyframes: {
         blink: {
