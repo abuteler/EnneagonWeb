@@ -37,7 +37,7 @@ pub fn GamePlay() -> impl IntoView {
           // space bar to free dive
           32 => state.on_free_dive(),
           /*
-            Double move in closures using pause() and resume() won't work.
+            Double `move` in closures using pause() and resume() won't work.
             Deferring for later.
             // Pause key
             19 => if is_active.get() {pause()} else {resume()}

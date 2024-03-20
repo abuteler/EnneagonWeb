@@ -21,7 +21,7 @@ impl Shape {
   pub fn new() -> Self {
     use rand::prelude::*;
     // randomize a number between 1 and 7
-    let num: usize = rand::thread_rng().gen_range(1..7);
+    let num: usize = rand::thread_rng().gen_range(1..8);
     let x: usize = GRID_COLS / 2 - 1;
     match num {
       1 => Shape {
@@ -54,19 +54,19 @@ impl Shape {
       4 => Shape {
         class: Shapes::RightL,
         cells: [
-          Cell::new(x, 0, Some(Color::Yellow), CellState::Fluid),
-          Cell::new(x, 1, Some(Color::Yellow), CellState::Fluid),
-          Cell::new(x, 2, Some(Color::Yellow), CellState::Fluid),
-          Cell::new(x+1, 2, Some(Color::Yellow), CellState::Fluid),
+          Cell::new(x, 0, Some(Color::Orange), CellState::Fluid),
+          Cell::new(x, 1, Some(Color::Orange), CellState::Fluid),
+          Cell::new(x, 2, Some(Color::Orange), CellState::Fluid),
+          Cell::new(x+1, 2, Some(Color::Orange), CellState::Fluid),
         ],
       },
       5 => Shape {
         class: Shapes::LeftLightning,
         cells: [
-          Cell::new(x+1, 0, Some(Color::Red), CellState::Fluid),
-          Cell::new(x+1, 1, Some(Color::Red), CellState::Fluid),
-          Cell::new(x, 1, Some(Color::Red), CellState::Fluid),
-          Cell::new(x, 2, Some(Color::Red), CellState::Fluid),
+          Cell::new(x+1, 0, Some(Color::Crimson), CellState::Fluid),
+          Cell::new(x+1, 1, Some(Color::Crimson), CellState::Fluid),
+          Cell::new(x, 1, Some(Color::Crimson), CellState::Fluid),
+          Cell::new(x, 2, Some(Color::Crimson), CellState::Fluid),
         ],
       },
       6 => Shape {
@@ -82,10 +82,10 @@ impl Shape {
       _ => Shape {
         class: Shapes::Tripod,
         cells: [
-          Cell::new(x, 0, Some(Color::Pink), CellState::Fluid),
-          Cell::new(x, 1, Some(Color::Pink), CellState::Fluid),
-          Cell::new(x, 2, Some(Color::Pink), CellState::Fluid),
-          Cell::new(x+1, 1, Some(Color::Pink), CellState::Fluid),
+          Cell::new(x, 0, Some(Color::LightSeaGreen), CellState::Fluid),
+          Cell::new(x, 1, Some(Color::LightSeaGreen), CellState::Fluid),
+          Cell::new(x, 2, Some(Color::LightSeaGreen), CellState::Fluid),
+          Cell::new(x+1, 1, Some(Color::LightSeaGreen), CellState::Fluid),
         ],
       }
     }

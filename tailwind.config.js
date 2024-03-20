@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'blink': 'blink .9s linear infinite'
+        'blink': 'blink .9s linear infinite',
+        'xplode': 'xplode .5s linear 1'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -19,6 +20,9 @@ module.exports = {
       },
       keyframes: {
         blink: {
+          '50%': { opacity: '0' },
+        },
+        xplode: {
           '50%': { opacity: '0' },
         }
       }
