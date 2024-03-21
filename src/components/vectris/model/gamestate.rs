@@ -16,8 +16,8 @@ pub struct GameState {
 impl GameState {
   pub fn new() -> Self {
     let mut m: [[RwSignal<Cell>; GRID_COLS]; GRID_ROWS] = Default::default();
-    for r in 0..GRID_ROWS-1 {
-      for c in 0..GRID_COLS-1 {
+    for r in 0..GRID_ROWS {
+      for c in 0..GRID_COLS {
         m[r][c] = create_rw_signal(Cell::new(c, r, None, CellState::Empty));
       }
     };
@@ -57,8 +57,33 @@ impl ControlState for GameState {
     }
   }
   fn next_cycle (&self) {
+    // get the unique vertical coordinates of the shape just landed
+    let mut rows_to_check:Vec<usize> = Vec::new();
+    for cell in self.current_shape.get().cells.iter() {
+      let row = cell.coordinates.1;
+      if !rows_to_check.contains(&row) { rows_to_check.push(row) };
+    };
+    // merge the shape into the matrix
     self.solidify_shape(self.current_shape.get());
+    // check the matrix for complete lines
+    for row in rows_to_check.into_iter() {
+      let mut full_row = true;
+      for col in 0..GRID_COLS {
+        if self.matrix[row][col].get().state == CellState::Empty { full_row = false; }
+      };
+      if (full_row) {
+        // Flag exploding
+        for col in 0..GRID_COLS {
+          self.matrix[row][col].update(|c| {
+            c.state = CellState::Exploding;
+          });
+        };
+      };
+      // logging::log!("col: {:?}", col);
+    };
     // TODO: check for complete lines, explode them, update score
+    // burn lines, 1line 1x, 2lines 1.5x, 3lines 2x, 4 lines = 3x?
+
     self.current_shape.set(self.next_shape.get());
     self.next_shape.set(Shape::new());
   }
