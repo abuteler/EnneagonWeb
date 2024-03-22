@@ -5,7 +5,7 @@ use super::super::{GameState, Status};
 pub fn GameMenu() -> impl IntoView {
   let state = expect_context::<GameState>();
   let status = state.status;
-  let neoize = state.neoize;
+  let flag_neoize = state.flag_neoize;
   let (toggle_label, set_toggle_label) = create_signal("Pause");
   let label_style = move || {
     match toggle_label.get() {
@@ -27,7 +27,7 @@ pub fn GameMenu() -> impl IntoView {
     status.set(Status::InMenus);
   };
   let see_the_matrix = move |_| {
-    neoize.set(!neoize.get());
+    flag_neoize.set(!flag_neoize.get());
   };
   view! {
     <nav>
