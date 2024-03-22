@@ -1,20 +1,19 @@
 use leptos::*;
-use leptos_use::{use_interval_fn, utils::Pausable};
-use crate::components::vectris::{Scores, Status};
-
-use super::{GameMenu, GameCanvas, UpNext};
-use super::super::{GameState, ControlState};
 use leptos::leptos_dom::ev::{keydown, KeyboardEvent};
+use leptos_use::{use_interval_fn, use_timeout_fn, UseTimeoutFnReturn, utils::Pausable};
+use crate::components::vectris::{GameCanvas, GameMenu, GameState, Landingable, Navigateable, Outcome, Scores, Status, UpNext};
 
 #[component]
 pub fn GamePlay() -> impl IntoView {
   let state = expect_context::<GameState>();
   let status = state.status;
-
+  let flag_landed = state.flag_landed;
+  let gravity_interval = state.gravity_interval;
   // initialize gravity interval (with a signal for difficulty increase as score increases)
-  let (interval, set_interval) = create_signal(800);
-  let Pausable { is_active, pause, resume } = use_interval_fn(move || {state.on_move_down();}, interval.get());
-
+  let Pausable { is_active, pause, resume } = use_interval_fn(
+    move || {state.on_move_down();},
+    gravity_interval
+  );
   // set listeners for game controls
   let (key_pressed, set_key_pressed) = create_signal(String::new());
   let controls_handle = window_event_listener(keydown, move |ev: KeyboardEvent| {
@@ -28,29 +27,42 @@ pub fn GamePlay() -> impl IntoView {
           37 => state.on_move_left(),
           38 => state.on_rotate(),
           39 => state.on_move_right(),
-          40 => {state.on_move_down(); ()},
+          40 => {state.on_move_down();()},
           // wasd
           65 => state.on_move_left(),
           68 => state.on_move_right(),
-          83 => {state.on_move_down(); ()},
+          83 => {state.on_move_down();()},
           87 => state.on_rotate(),
           // space bar to free dive
           32 => state.on_free_dive(),
-          /*
-            Double `move` in closures using pause() and resume() won't work.
-            Deferring for later.
-            // Pause key
-            19 => if is_active.get() {pause()} else {resume()}
-            // P
-            80 => if is_active.get() {pause()} else {resume()}
-          */
+          // Pause key
+          19 => if is_active.get() {status.set(Status::Paused)} else {status.set(Status::Playing)}
+          // P
+          80 => if is_active.get() {status.set(Status::Paused)} else {status.set(Status::Playing)}
+          // _ catch all
           _ => {}
         };
       }
     }
   });
-
-  // set game status change behavior
+  // subscribe to the eventual landing of a shape
+  create_effect(move |_| {
+    if flag_landed.get() {
+      let outcome = state.process_landing();
+      // process affected lines -> complete? flag for xplosion -> delay -> execute xplosion -> update matrix -> resume
+      if !outcome.rows_to_burn.is_empty() {
+        let UseTimeoutFnReturn { start, .. } = use_timeout_fn(
+          move |_| {
+              let o = outcome.clone();
+              state.execute_outcome(o);
+          },
+          100.0
+        );
+        start(());
+      }
+    }
+  });
+  // subscribe to game status changes and bind to gravity interval
   create_effect(move |_|{
     let status = status.get();
     match status {
@@ -63,7 +75,9 @@ pub fn GamePlay() -> impl IntoView {
       _ => {},
     }
   });
+  // bind removal of window listener on leptos component cleanup
   on_cleanup(move || controls_handle.remove());
+
   view! {
     <section id="gameplay-container">
       <GameMenu />

@@ -1,2 +1,4 @@
 mod navigationsystem;
-pub use navigationsystem::ControlState;
+mod landingsystem;
+pub use navigationsystem::Navigateable;
+pub use landingsystem::{Landingable, Outcome};
