@@ -180,7 +180,7 @@ impl Landingable for GameState {
       for col in 0..GRID_COLS {
         if self.matrix[row][col].get().state == CellState::Empty { full_row = false; }
       };
-      if (full_row) {
+      if full_row {
         // Flag exploding
         for col in 0..GRID_COLS {
           self.matrix[row][col].update(|c| {

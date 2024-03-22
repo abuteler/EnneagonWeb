@@ -1,7 +1,7 @@
 use leptos::*;
 use leptos::leptos_dom::ev::{keydown, KeyboardEvent};
 use leptos_use::{use_interval_fn, use_timeout_fn, UseTimeoutFnReturn, utils::Pausable};
-use crate::components::vectris::{GameCanvas, GameMenu, GameState, Landingable, Navigateable, Outcome, Scores, Status, UpNext};
+use crate::components::vectris::{GameCanvas, GameMenu, GameState, Landingable, Navigateable, Scores, Status, UpNext};
 
 #[component]
 pub fn GamePlay() -> impl IntoView {
