@@ -49,6 +49,7 @@ pub fn GamePlay() -> impl IntoView {
   create_effect(move |_| {
     if flag_landed.get() {
       let outcome = state.process_landing();
+      state.initialize_next_cycle();
       // process affected lines -> complete? flag for xplosion -> delay -> execute xplosion -> update matrix -> resume
       if !outcome.rows_to_burn.is_empty() {
         let UseTimeoutFnReturn { start, .. } = use_timeout_fn(
@@ -69,7 +70,7 @@ pub fn GamePlay() -> impl IntoView {
       Status::Paused => { if is_active.get() { pause() } },
       Status::Playing => { if !is_active.get() { resume() } },
       Status::GameOver => {
-        /* TODO */
+        logging::log!("it's game over!");
         if is_active.get() { pause() };
       },
       _ => {},

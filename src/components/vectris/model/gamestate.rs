@@ -165,46 +165,46 @@ impl Landingable for GameState {
     }
   }
   fn initialize_next_cycle (&self) {
+    if self.status.get() == Status::GameOver { return; }
+    self.flag_landed.set(false);
     self.current_shape.set(self.next_shape.get());
-    // check for potential collision
-    for cell in self.current_shape.get().cells.iter_mut() {
+    self.next_shape.set(Shape::new());
+    // check for collision on placement
+    for cell in self.next_shape.get().cells.iter_mut() {
       let (r, c) = cell.coordinates;
       if self.matrix[r][c].get().state == CellState::Solid {
         self.status.set(Status::GameOver);
-        return;
       }
     }
-    self.next_shape.set(Shape::new());
-    self.flag_landed.set(false);
   }
   fn process_landing (&self) -> Outcome {
+    let shape = self.current_shape.get();
     // get the unique vertical coordinates of the shape just landed
     let mut rows_affected:Vec<usize> = Vec::new();
-    for cell in self.current_shape.get().cells.iter() {
-      let row = cell.coordinates.1;
-      if !rows_affected.contains(&row) { rows_affected.push(row) };
+    for cell in shape.cells.iter() {
+      let r = cell.coordinates.0;
+      if !rows_affected.contains(&r) { rows_affected.push(r) };
     };
     // merge the shape into the matrix
-    self.solidify_shape(self.current_shape.get());
+    self.solidify_shape(shape);
     // check the matrix for complete lines and keep track of which (if any)
     let mut rows_to_burn:Vec<usize> = Vec::new();
-    for row in rows_affected.into_iter() {
+    for r in rows_affected.into_iter() {
       let mut full_row = true;
-      for col in 0..GRID_COLS {
-        if self.matrix[row][col].get().state == CellState::Empty { full_row = false; }
+      for c in 0..GRID_COLS {
+        if self.matrix[r][c].get().state == CellState::Empty { full_row = false; }
       };
       if full_row {
         // Flag exploding
-        for col in 0..GRID_COLS {
-          self.matrix[row][col].update(|c| {
-            c.state = CellState::Exploding;
+        for c in 0..GRID_COLS {
+          self.matrix[r][c].update(|cell| {
+            cell.state = CellState::Exploding;
           });
         };
         // track vertical coordinate
-        if !rows_to_burn.contains(&row){ rows_to_burn.push(row) };
+        if !rows_to_burn.contains(&r){ rows_to_burn.push(r) };
       };
     };
-    self.initialize_next_cycle();
     Outcome {
       rows_to_burn
     }
