@@ -82,12 +82,17 @@ pub fn GamePlay() -> impl IntoView {
   view! {
     <section id="gameplay-container">
       <GameMenu />
-      <div class="flex gap-6">
+      <div class="flex gap-6 relative justify-center">
         <GameCanvas />
         <section id="right-panel" class="flex flex-col gap-6">
           <UpNext />
           <Scores />
         </section>
+        <Show when=move || { state.status.get() == Status::GameOver }>
+          <section class="absolute top-[30%] flex items-center justify-center w-[70%] h-[70px] border-8 border-sky-300 border-l-sky-600 border-r-sky-500 border-t-sky-700 bg-red-100">
+            <h1 class="text-xl uppercase font-bold text-black">Game over!</h1>
+          </section>
+        </Show>
       </div>
       <p>Pressed key code: <span class="text-sky-400">{ move || key_pressed.get() }</span></p>
     </section>

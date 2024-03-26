@@ -14,12 +14,14 @@ pub fn GameMenu() -> impl IntoView {
     }
   };
   let toggle_pause = move |_| {
-    if status.get() == Status::Playing {
-      status.set(Status::Paused);
-      set_toggle_label("Resume");
-    } else {
-      status.set(Status::Playing);
-      set_toggle_label("Pause");
+    if status.get() != Status::GameOver {
+      if status.get() == Status::Playing {
+        status.set(Status::Paused);
+        set_toggle_label("Resume");
+      } else {
+        status.set(Status::Playing);
+        set_toggle_label("Pause");
+      }
     }
   };
   let quit_game = move |_| {
