@@ -25,7 +25,7 @@ pub fn UpNext() -> impl IntoView {
         };
       };
       for cell in next.get().cells.into_iter() {
-        let Cell { coordinates: (col, row), color, state } = cell;
+        let Cell { coordinates: (row, col), color, state } = cell;
         // adjust original cell coordinates to smaller canvas
         let row_ = row + 1; // because y = 0
         // original x calculation = `GRID_COLS / 2 - 1`, so, move to zero, then +1

@@ -48,9 +48,9 @@ pub struct Cell {
 }
 
 impl Cell {
-  pub fn new(column: usize, row: usize, color: Option<Color>, state: CellState) -> Self {
+  pub fn new(row: usize, column: usize, color: Option<Color>, state: CellState) -> Self {
     Self {
-      coordinates: (column, row),
+      coordinates: (row, column),
       color,
       state,
     }

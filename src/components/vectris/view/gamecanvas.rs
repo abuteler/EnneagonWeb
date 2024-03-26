@@ -11,7 +11,7 @@ pub fn GameCanvas() -> impl IntoView {
   create_effect(move |_| {
     // subscribed to changes in the current_shape signal
     for cell in avatar.get().cells.into_iter() {
-      let Cell { coordinates: (col, row), color, state } = cell;
+      let Cell { coordinates: (row, col), color, state } = cell;
       matrix[row][col].update(|m_cell| {
         m_cell.color = color;
         m_cell.state = state;

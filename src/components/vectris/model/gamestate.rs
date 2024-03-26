@@ -21,7 +21,7 @@ impl GameState {
     let mut m: [[RwSignal<Cell>; GRID_COLS]; GRID_ROWS] = Default::default();
     for r in 0..GRID_ROWS {
       for c in 0..GRID_COLS {
-        m[r][c] = create_rw_signal(Cell::new(c, r, None, CellState::Empty));
+        m[r][c] = create_rw_signal(Cell::new(r, c, None, CellState::Empty));
       }
     };
     Self {
@@ -50,12 +50,12 @@ impl Navigateable for GameState {
     let mut shape = self.current_shape.get();
     let mut walled = false;
     for cell in shape.cells.iter_mut() {
-      let (c, r) = cell.coordinates;
+      let (r, c) = cell.coordinates;
       if c == wall || self.matrix[r][c-1].get().state == CellState::Solid {
         walled = true;
         break;
       }
-      cell.coordinates.0 -= 1;
+      cell.coordinates.1 -= 1;
     }
     if !walled {
       self.clear_coordinates(self.current_shape.get());
@@ -67,12 +67,12 @@ impl Navigateable for GameState {
     let mut shape = self.current_shape.get();
     let mut walled = false;
     for cell in shape.cells.iter_mut() {
-      let (c, r) = cell.coordinates;
+      let (r, c) = cell.coordinates;
       if c+1 == wall || self.matrix[r][c+1].get().state == CellState::Solid {
         walled = true;
         break;
       }
-      cell.coordinates.0 += 1;
+      cell.coordinates.1 += 1;
     }
     if !walled {
       self.clear_coordinates(self.current_shape.get());
@@ -84,29 +84,29 @@ impl Navigateable for GameState {
     let mut illegal_rotation = false;
     if shape.class != Shapes::Square {
       // step one: take the second cell's coordinates as my origin
-      let (origin_c, origin_r) = shape.cells[1].coordinates;
+      let (origin_r, origin_c) = shape.cells[1].coordinates;
       for cell in shape.cells.iter_mut() {
         // use of auxiliary signed coordinates b/c linear transformation will do (-y, x)
-        let (mut signed_c, mut signed_r): (isize, isize);
+        let (mut signed_r, mut signed_c): (isize, isize);
         // step two: offset all cells by the new "origin" coordinates
-        signed_c = cell.coordinates.0 as isize - origin_c as isize;
-        signed_r = cell.coordinates.1 as isize - origin_r as isize;
+        signed_r = cell.coordinates.0 as isize - origin_r as isize;
+        signed_c = cell.coordinates.1 as isize - origin_c as isize;
         // note that cell #2 will end up being (0,0)
         if cell.coordinates != (0,0) {
           // step three: apply the Linear Transformation (-y, x), which rotates 90 degrees counter clockwise
           // See http://en.wikipedia.org/wiki/Transformation_matrix#Examples_in_2D_graphics
-          (signed_c, signed_r) = (-signed_r, signed_c);
+          (signed_r, signed_c) = (-signed_c, signed_r);
         }
         // step four: return to original coordinates in the matrix
-        cell.coordinates.0 = (signed_c + origin_c as isize) as usize;
-        cell.coordinates.1 = (signed_r + origin_r as isize) as usize;
+        cell.coordinates.0 = (signed_r + origin_r as isize) as usize;
+        cell.coordinates.1 = (signed_c + origin_c as isize) as usize;
         // step five: check for collisions before committing!
-        if cell.coordinates.0 > GRID_COLS-1 || cell.coordinates.1 > GRID_ROWS-1 {
+        if cell.coordinates.0 > GRID_ROWS-1 || cell.coordinates.1 > GRID_COLS-1 {
           // out of bounds
           illegal_rotation = true;
           break;
         }
-        if self.matrix[cell.coordinates.1][cell.coordinates.0].get().state == CellState::Solid {
+        if self.matrix[cell.coordinates.0][cell.coordinates.1].get().state == CellState::Solid {
           // trampling is not allowed
           illegal_rotation = true;
           break;
@@ -123,12 +123,12 @@ impl Navigateable for GameState {
     let mut shape = self.current_shape.get();
     let mut is_floored = false;
     for cell in shape.cells.iter_mut() {
-      let (c, r) = cell.coordinates;
+      let (r, c) = cell.coordinates;
       if r+1 == floor || self.matrix[r+1][c].get().state == CellState::Solid {
         is_floored = true;
         break;
       }
-      cell.coordinates.1 += 1;
+      cell.coordinates.0 += 1;
     }
     if is_floored {
       self.flag_landed.set(true);
@@ -149,7 +149,7 @@ impl Navigateable for GameState {
 impl Landingable for GameState {
   fn clear_coordinates(&self, shape: Shape) {
     for cell in shape.cells.iter() {
-      let (c,r) = cell.coordinates;
+      let (r, c) = cell.coordinates;
       self.matrix[r][c].update(move |cell| {
         cell.color = None;
         cell.state = CellState::Empty;
@@ -158,11 +158,24 @@ impl Landingable for GameState {
   }
   fn solidify_shape (&self, shape: Shape) {
     for cell in shape.cells.iter() {
-      let (c,r) = cell.coordinates;
+      let (r, c) = cell.coordinates;
       self.matrix[r][c].update(move |cell| {
         cell.state = CellState::Solid;
       });
     }
+  }
+  fn initialize_next_cycle (&self) {
+    self.current_shape.set(self.next_shape.get());
+    // check for potential collision
+    for cell in self.current_shape.get().cells.iter_mut() {
+      let (r, c) = cell.coordinates;
+      if self.matrix[r][c].get().state == CellState::Solid {
+        self.status.set(Status::GameOver);
+        return;
+      }
+    }
+    self.next_shape.set(Shape::new());
+    self.flag_landed.set(false);
   }
   fn process_landing (&self) -> Outcome {
     // get the unique vertical coordinates of the shape just landed
@@ -191,9 +204,7 @@ impl Landingable for GameState {
         if !rows_to_burn.contains(&row){ rows_to_burn.push(row) };
       };
     };
-    self.current_shape.set(self.next_shape.get());
-    self.next_shape.set(Shape::new());
-    self.flag_landed.set(false);
+    self.initialize_next_cycle();
     Outcome {
       rows_to_burn
     }
